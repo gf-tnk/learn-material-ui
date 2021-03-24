@@ -20,10 +20,18 @@ const AppStyleProvider: React.FC = ({ children }) => {
             main: mainSecondaryColor,
           },
         },
+        typography: {
+          fontFamily: [
+            "Anakotmai-medium",
+            "Anakotmai-bold",
+            "Anakotmai-light",
+          ].join(","),
+        },
         overrides: {
           MuiButton: {
             root: {
               borderRadius: "30px",
+              fontFamily: "Anakotmai-medium"
             },
           },
         },

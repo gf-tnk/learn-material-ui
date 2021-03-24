@@ -14,7 +14,6 @@
     /* Modern Browsers */ url("/src/assets/fonts/anakotmai-medium.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 
-
 @font-face {
   font-family: "Anakotmai-bold";
   src: url("./assets/fonts/anakotmai-bold.ttf") format("opentype"),
@@ -32,4 +31,55 @@ body {
 
 code {
   font-family: "Anakotmai-light";
+}
+
+/* Typography */
+.wh1 {
+  font-family: "Anakotmai-bold";
+  font-size: 32px;
+}
+
+.wh2 {
+  font-family: "Anakotmai-bold";
+  font-size: 20px;
+}
+
+.wd1 {
+  font-family: "Anakotmai-light";
+  font-size: 20px;
+}
+
+.wd2 {
+  font-family: "Anakotmai-light";
+  font-size: 16px;
+}
+
+.wd3 {
+  font-family: "Anakotmai-light";
+  font-size: 14px;
+}
+
+.wd4 {
+  font-family: "Anakotmai-light";
+  font-size: 12px;
+}
+
+.wdb1 {
+  font-family: "Anakotmai-bold";
+  font-size: 20px;
+}
+
+.wdb2 {
+  font-family: "Anakotmai-bold";
+  font-size: 16px;
+}
+
+.wdb3 {
+  font-family: "Anakotmai-bold";
+  font-size: 14px;
+}
+
+.wdb4 {
+  font-family: "Anakotmai-bold";
+  font-size: 12px;
 }
