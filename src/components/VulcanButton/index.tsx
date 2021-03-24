@@ -6,6 +6,6 @@ import {
 
 export const VulcanButton = withStyles((theme: Theme) => ({
   root: {
-    borderRadius: "50px",
-  },
+    borderRadius: "30px",
+  }
 }))(Button);

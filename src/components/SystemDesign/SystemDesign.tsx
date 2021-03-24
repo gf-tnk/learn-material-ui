@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { Switch, Button, Typography, Paper } from "@material-ui/core";
+import { Switch, Button, Typography, Paper, Slider } from "@material-ui/core";
 import { ThemeContext } from "../../contexts/theme";
-import { VulcanButton } from "../VulcanButton";
 
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
@@ -10,30 +9,44 @@ const SystemDesign = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const valuetext = (value: number) => `${value}°C`
+
   return (
     <div>
+      <Typography id="discrete-slider" gutterBottom>
+        Theme
+      </Typography>
       <Switch checked={isDarkMode} onChange={handleThemeChange} />
-      <Typography variant="h1" component="h2">
+      <Typography id="discrete-slider" gutterBottom>
+        Font size
+      </Typography>
+      <Slider
+        defaultValue={30}
+        getAriaValueText={valuetext}
+        aria-labelledby="discrete-slider"
+        valueLabelDisplay="auto"
+        step={10}
+        marks
+        min={10}
+        max={110}
+      />
+      <Typography variant="h3" component="h3">
         Hello Vulcan Dark Theme
       </Typography>
       <p>
         Vulcan ร่วมมือกับผู้พิการทางสายตาในการประมวลเสียงและข้อความ
         เพื่อพัฒนาระบบดิจิตอลในการประมวลผลคำพูดภาษาไทย
       </p>
-      <Paper elevation={0} style={{ padding: "24px", margin: "8px" }}>
+      <Paper elevation={1} style={{ padding: "24px", margin: "8px" }}>
         <div>
-          <Button variant="contained">Default</Button>
           <Button variant="contained" color="primary">
-            Primary
+            สวัสดี Primary
           </Button>
           <Button variant="contained" color="secondary">
-            Secondary
+            สวัสดี Secondary
           </Button>
           <Button variant="contained" disabled>
-            Disabled
-          </Button>
-          <Button variant="contained" color="primary" href="#contained-buttons">
-            Link
+            สวัสดี Disabled
           </Button>
         </div>
       </Paper>
