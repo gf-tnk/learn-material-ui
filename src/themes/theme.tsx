@@ -5,16 +5,24 @@ import { ThemeContext } from "../contexts/theme";
 
 
 const AppStyleProvider: React.FC = ({ children }) => {
-  const { viewMode, } = useContext(ThemeContext);
+  const { isDarkMode, } = useContext(ThemeContext);
+  const mainPrimaryColor = isDarkMode ? "#212121" : "#F0F0F0";
+  const mainSecondaryColor = isDarkMode ? "#868787" : "#727373";
 
   const theme = React.useMemo(
     () =>
       createMuiTheme({
         palette: {
-          type: viewMode ? 'dark' : 'light',
+          type: isDarkMode ? 'dark' : 'light',
+          primary: {
+            main: mainPrimaryColor
+          },
+          secondary: {
+            main: mainSecondaryColor
+          }
         },
       }),
-    [viewMode],
+    [isDarkMode],
   );
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;

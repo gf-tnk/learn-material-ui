@@ -1,21 +1,21 @@
 import React, { useState, useContext } from "react";
 
 interface Props {
-  viewMode: boolean | undefined;
-  setViewMode: (value: boolean) => void;
+  isDarkMode: boolean | undefined;
+  setIsDarkMode: (value: boolean) => void;
 }
 export const ThemeContext = React.createContext<Props>({
-  viewMode: false,
-  setViewMode: () => {},
+  isDarkMode: false,
+  setIsDarkMode: () => {},
 });
 const ThemeContextProvider = (props: { children: React.ReactNode }) => {
-  const [viewMode, setViewMode] = useState<boolean>(true);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   return (
     <ThemeContext.Provider
       value={{
-        viewMode,
-        setViewMode,
+        isDarkMode,
+        setIsDarkMode,
       }}
     >
       {props.children}
