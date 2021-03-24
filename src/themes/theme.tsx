@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { ThemeContext } from "../contexts/theme";
 

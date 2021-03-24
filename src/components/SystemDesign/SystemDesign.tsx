@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Switch,
   Button,
@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import { ThemeContext } from "../../contexts/theme";
 
+import { setFontsize } from "../../plugins/setFontSize";
+
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
 
@@ -16,26 +18,31 @@ const SystemDesign = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const valuetext = (value: number) => `${value}°C`;
+  const valuetext = (value: number) => `${value}px`;
+
+  const handleSlider = (event: object, value: number | number[]) => {
+    setFontsize(value + "px");
+  };
 
   return (
     <>
       <Container>
         <h1 className="wh1">System Design</h1>
         <h2 className="wh2">Theme</h2>
-        <Switch checked={isDarkMode} onChange={handleThemeChange}/>
+        <Switch checked={isDarkMode} onChange={handleThemeChange} />
         <h2 className="wh2">Font Size</h2>
         <Slider
-          defaultValue={40}
+          defaultValue={0}
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider"
           valueLabelDisplay="auto"
-          step={10}
+          step={2}
           marks
-          min={10}
-          max={70}
+          min={-8}
+          max={8}
           color="secondary"
-          style={{width: "300px"}}
+          style={{ width: "300px" }}
+          onChange={handleSlider}
         />
         <h2 className="wh2">Typography</h2>
         <Paper elevation={1} style={{ padding: "24px", margin: "8px" }}>

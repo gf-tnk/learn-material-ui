@@ -1,25 +1,45 @@
+:root {
+  --upfont-wh1: 0px;
+  --upfont-wh2: 0px;
+  --upfont-wd1: 0px;
+  --upfont-wd2: 0px;
+  --upfont-wd3: 0px;
+  --upfont-wd4: 0px;
+  --upfont-wdb1: 0px;
+  --upfont-wdb2: 0px;
+  --upfont-wdb3: 0px;
+  --upfont-wdb4: 0px;
+}
+
 @font-face {
   font-family: "Anakotmai-light";
   src: url("./assets/fonts/anakotmai-light.ttf") format("opentype"),
     /* IE6-IE8 */ url("/src/assets/fonts/anakotmai-light.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/src/assets/fonts/anakotmai-light.woff") format("woff"),
-    /* Modern Browsers */ url("/src/assets/fonts/anakotmai-light.ttf") format("truetype"); /* Safari, Android, iOS */
+    /* Super Modern Browsers */ url("/src/assets/fonts/anakotmai-light.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/src/assets/fonts/anakotmai-light.ttf")
+      format("truetype"); /* Safari, Android, iOS */
 }
 
 @font-face {
   font-family: "Anakotmai-medium";
   src: url("./assets/fonts/anakotmai-medium.ttf") format("opentype"),
-    /* IE6-IE8 */ url("/src/assets/fonts/anakotmai-medium.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/src/assets/fonts/anakotmai-medium.woff") format("woff"),
-    /* Modern Browsers */ url("/src/assets/fonts/anakotmai-medium.ttf") format("truetype"); /* Safari, Android, iOS */
+    /* IE6-IE8 */ url("/src/assets/fonts/anakotmai-medium.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("/src/assets/fonts/anakotmai-medium.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/src/assets/fonts/anakotmai-medium.ttf")
+      format("truetype"); /* Safari, Android, iOS */
 }
 
 @font-face {
   font-family: "Anakotmai-bold";
   src: url("./assets/fonts/anakotmai-bold.ttf") format("opentype"),
     /* IE6-IE8 */ url("/src/assets/fonts/anakotmai-bold.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/src/assets/fonts/anakotmai-bold.woff") format("woff"),
-    /* Modern Browsers */ url("/src/assets/fonts/anakotmai-bold.ttf") format("truetype"); /* Safari, Android, iOS */
+    /* Super Modern Browsers */ url("/src/assets/fonts/anakotmai-bold.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/src/assets/fonts/anakotmai-bold.ttf")
+      format("truetype"); /* Safari, Android, iOS */
 }
 
 body {
@@ -36,50 +56,50 @@ code {
 /* Typography */
 .wh1 {
   font-family: "Anakotmai-bold";
-  font-size: 32px;
+  font-size: calc(32px + var(--upfont-wh1)) !important;
 }
 
 .wh2 {
   font-family: "Anakotmai-bold";
-  font-size: 20px;
+  font-size: calc(20px + var(--upfont-wh2)) !important;
 }
 
 .wd1 {
   font-family: "Anakotmai-light";
-  font-size: 20px;
+  font-size: calc(20px + var(--upfont-wd1)) !important;
 }
 
 .wd2 {
   font-family: "Anakotmai-light";
-  font-size: 16px;
+  font-size: calc(16px + var(--upfont-wd2)) !important;
 }
 
 .wd3 {
   font-family: "Anakotmai-light";
-  font-size: 14px;
+  font-size: calc(14px + var(--upfont-wd3)) !important;
 }
 
 .wd4 {
   font-family: "Anakotmai-light";
-  font-size: 12px;
+  font-size: calc(12px + var(--upfont-wd4)) !important;
 }
 
 .wdb1 {
   font-family: "Anakotmai-bold";
-  font-size: 20px;
+  font-size: calc(20px + var(--upfont-wdb1)) !important;
 }
 
 .wdb2 {
   font-family: "Anakotmai-bold";
-  font-size: 16px;
+  font-size: calc(16px + var(--upfont-wdb2)) !important;
 }
 
 .wdb3 {
   font-family: "Anakotmai-bold";
-  font-size: 14px;
+  font-size: calc(14px + var(--upfont-wdb3)) !important;
 }
 
 .wdb4 {
   font-family: "Anakotmai-bold";
-  font-size: 12px;
+  font-size: calc(12px + var(--upfont-wdb4)) !important;
 }
