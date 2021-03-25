@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import SystemDesign from "./components/SystemDesign/SystemDesign";
+import SystemDesign from "./components/DesignSystem/DesignSystem";
 import theme from "./themes/theme";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ThemeContextProvider from "./contexts/theme";
 import ThemeProvider from "./themes/theme";
 
-import { setFontsize } from "./plugins/setFontSize";
+import { setFontsize } from "./plugins/setElementSize";
  
 function App() {
 

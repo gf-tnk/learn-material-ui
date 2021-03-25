@@ -20,6 +20,7 @@ export const setFontsize = (fontSizeMode: string) => {
   var wdb2 = document.getElementsByClassName("wdb2") as HTMLCollectionOf<HTMLElement>;
   var wdb3 = document.getElementsByClassName("wdb3") as HTMLCollectionOf<HTMLElement>;
   var wdb4 = document.getElementsByClassName("wdb4") as HTMLCollectionOf<HTMLElement>;
+  var wdb4 = document.getElementsByClassName("wdb4") as HTMLCollectionOf<HTMLElement>;
 
   body.style.setProperty('--up-body', fontSizeMode);
 
@@ -34,4 +35,12 @@ export const setFontsize = (fontSizeMode: string) => {
   setPropFontSize(wdb3, "wdb3", fontSizeMode)
   setPropFontSize(wdb4, "wdb4", fontSizeMode)
 
+};
+
+
+export const setButtonSize = (btnSizeMode: string) => {
+  localStorage.setItem('btnSizeMode', btnSizeMode);
+  var btn = document.getElementsByClassName("MuiButton-label") as HTMLCollectionOf<HTMLElement>;
+
+  setPropFontSize(btn, "wdb3", btnSizeMode)
 };

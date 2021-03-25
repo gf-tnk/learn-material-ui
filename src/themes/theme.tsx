@@ -4,8 +4,8 @@ import { ThemeContext } from "../contexts/theme";
 
 const AppStyleProvider: React.FC = ({ children }) => {
   const { isDarkMode } = useContext(ThemeContext);
-  const mainPrimaryColor = isDarkMode ? "#212121" : "#F0F0F0";
-  const mainSecondaryColor = isDarkMode ? "#868787" : "#727373";
+  const mainPrimaryColor = isDarkMode ? "#F0F0F0" : "#212121";
+  const mainSecondaryColor = isDarkMode ? "#727373" : "#868787";
 
   const theme = React.useMemo(
     () =>
@@ -30,9 +30,12 @@ const AppStyleProvider: React.FC = ({ children }) => {
           MuiButton: {
             root: {
               borderRadius: "30px",
-              fontFamily: "Anakotmai-medium"
+              fontFamily: "Anakotmai-medium",
             },
-          },
+            label: {
+              fontSize: "calc(14px + var(--upfont-wdb3)) !important",
+            },
+          }
         },
       }),
     [isDarkMode]
