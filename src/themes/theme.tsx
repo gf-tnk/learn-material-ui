@@ -33,9 +33,15 @@ const AppStyleProvider: React.FC = ({ children }) => {
               fontFamily: "Anakotmai-medium",
             },
             label: {
-              fontSize: "calc(14px + var(--upfont-wdb3)) !important",
+              fontSize: "calc(14px + var(--btn-scale)) !important",
             },
-          }
+            outlinedPrimary: {
+              border: `2px solid ${mainPrimaryColor}`,
+              "&:hover": {
+                border: `2px solid ${mainPrimaryColor}`,
+              },
+            },
+          },
         },
       }),
     [isDarkMode]

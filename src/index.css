@@ -1,15 +1,3 @@
-:root {
-  --upfont-wh1: 0px;
-  --upfont-wh2: 0px;
-  --upfont-wd1: 0px;
-  --upfont-wd2: 0px;
-  --upfont-wd3: 0px;
-  --upfont-wd4: 0px;
-  --upfont-wdb1: 0px;
-  --upfont-wdb2: 0px;
-  --upfont-wdb3: 0px;
-  --upfont-wdb4: 0px;
-}
 
 @font-face {
   font-family: "Anakotmai-light";
@@ -56,50 +44,56 @@ code {
 /* Typography */
 .wh1 {
   font-family: "Anakotmai-bold";
-  font-size: calc(32px + var(--upfont-wh1)) !important;
+  font-size: calc(32px + var(--font-scale)) !important;
 }
 
 .wh2 {
   font-family: "Anakotmai-bold";
-  font-size: calc(20px + var(--upfont-wh2)) !important;
+  font-size: calc(20px + var(--font-scale)) !important;
 }
 
 .wd1 {
   font-family: "Anakotmai-light";
-  font-size: calc(20px + var(--upfont-wd1)) !important;
+  font-size: calc(20px + var(--font-scale)) !important;
 }
 
 .wd2 {
   font-family: "Anakotmai-light";
-  font-size: calc(16px + var(--upfont-wd2)) !important;
+  font-size: calc(16px + var(--font-scale)) !important;
 }
 
 .wd3 {
   font-family: "Anakotmai-light";
-  font-size: calc(14px + var(--upfont-wd3)) !important;
+  font-size: calc(14px + var(--font-scale)) !important;
 }
 
 .wd4 {
   font-family: "Anakotmai-light";
-  font-size: calc(12px + var(--upfont-wd4)) !important;
+  font-size: calc(12px + var(--font-scale)) !important;
 }
 
 .wdb1 {
   font-family: "Anakotmai-bold";
-  font-size: calc(20px + var(--upfont-wdb1)) !important;
+  font-size: calc(20px + var(--font-scale)) !important;
 }
 
 .wdb2 {
   font-family: "Anakotmai-bold";
-  font-size: calc(16px + var(--upfont-wdb2)) !important;
+  font-size: calc(16px + var(--font-scale)) !important;
 }
 
 .wdb3 {
   font-family: "Anakotmai-bold";
-  font-size: calc(14px + var(--upfont-wdb3)) !important;
+  font-size: calc(14px + var(--font-scale)) !important;
 }
 
 .wdb4 {
   font-family: "Anakotmai-bold";
-  font-size: calc(12px + var(--upfont-wdb4)) !important;
+  font-size: calc(12px + var(--font-scale)) !important;
+}
+
+/* set background color for smart home button */
+.green-btn {
+  background-color: #219653 !important;
+  color: white !important;
 }

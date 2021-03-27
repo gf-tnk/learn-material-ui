@@ -20,5 +20,5 @@ export const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "24px",
     border: "2px solid",
     borderColor: theme.palette.secondary.main,
-  },
+  }
 }));

@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { ThemeContext } from "../../contexts/theme";
 import { useStyles } from "./style";
-import { setFontsize, setButtonSize } from "../../plugins/setElementSize";
+import { setFontScale, setBtnScale } from "../../plugins/setScaleElement";
 
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
@@ -25,11 +25,11 @@ const SystemDesign = () => {
   const valuetext = (value: number) => `${value}px`;
 
   const handleFontSize = (event: object, value: number | number[]) => {
-    setFontsize(value + "px");
+    setFontScale(value + "px");
   };
 
   const handleBtsSize = (event: object, value: number | number[]) => {
-    setButtonSize(value + "px");
+    setBtnScale(value + "px");
   };
 
   const handleClose = () => {
@@ -38,16 +38,12 @@ const SystemDesign = () => {
 
   const handleOpen = () => {
     setIsOpen(true);
-    const fontSizeMode = localStorage.getItem("fontSizeMode");
-    if (!fontSizeMode) {
-      return;
-    }
-    setFontsize(fontSizeMode);
   };
+
   return (
     <>
       <Container>
-        <h1 className="wh1">Design System</h1>
+        <h1 className="wh1">Design Systems</h1>
         <h2 className="wh2">Theme</h2>
         <Switch checked={isDarkMode} onChange={handleThemeChange} />
         <Grid container>
@@ -114,9 +110,11 @@ const SystemDesign = () => {
                 <Button variant="contained" disabled>
                   สวัสดี Disabled
                 </Button>
-                <Button variant="outlined">สวัสดี Primary</Button>
-                <Button variant="outlined" color="secondary">
-                  สวัสดี Secondary
+                <Button className="green-btn" variant="contained">
+                  สวัสดี Primary
+                </Button>
+                <Button variant="outlined" color="primary">
+                  สวัสดี Primary
                 </Button>
                 <Button variant="outlined" disabled>
                   สวัสดี Disabled
@@ -139,13 +137,18 @@ const SystemDesign = () => {
                   aria-labelledby="modal-title"
                   aria-describedby="modal-description"
                   className={classes.modal}
+                  container={() =>
+                    document.querySelector("#root") as HTMLElement
+                  }
                 >
                   <Paper className={classes.paper}>
                     <Box justifyContent="center" display="flex">
                       <Box p={4} textAlign="center">
                         <h2 className="wh2">My Title</h2>
                         <p className="wd2">My Description</p>
-                        <Button variant="outlined">สวัสดี Primary</Button>
+                        <Button variant="outlined" onClick={handleClose}>
+                          สวัสดี Primary
+                        </Button>
                       </Box>
                     </Box>
                   </Paper>
