@@ -14,6 +14,9 @@ import { ThemeContext } from "../../contexts/theme";
 import { useStyles } from "./style";
 import { setFontScale, setBtnScale } from "../../plugins/setScaleElement";
 
+import sttIcon from "../../assets/images/stt-app.svg";
+
+import AppLogo from "./AppLogo/AppLogo";
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
   const classes = useStyles();
@@ -159,6 +162,32 @@ const SystemDesign = () => {
               </div>
             </Paper>
           </Grid>
+        </Grid>
+
+        <Grid container>
+          <h2 className="wh2">App Icon</h2>
+          <Grid
+            container
+            item
+            md={12}
+            direction="row"
+            justify="center"
+            alignItems="center"
+          >
+            <Grid item md={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            </Grid>
+            <Grid item md={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            </Grid>
+            <Grid item md={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            </Grid>
+            <Grid item md={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            </Grid>
+          </Grid>
+          <Grid item md={6}></Grid>
         </Grid>
       </Container>
     </>
