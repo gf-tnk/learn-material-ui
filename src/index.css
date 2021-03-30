@@ -49,47 +49,47 @@ code {
 
 .wh2 {
   font-family: "Anakotmai-bold";
-  font-size: calc(20px + var(--font-scale)) !important;
+  font-size: calc(24px + var(--font-scale)) !important;
 }
 
-.wd1 {
-  font-family: "Anakotmai-light";
-  font-size: calc(20px + var(--font-scale)) !important;
-}
-
-.wd2 {
-  font-family: "Anakotmai-light";
-  font-size: calc(16px + var(--font-scale)) !important;
-}
-
-.wd3 {
-  font-family: "Anakotmai-light";
-  font-size: calc(14px + var(--font-scale)) !important;
-}
-
-.wd4 {
-  font-family: "Anakotmai-light";
-  font-size: calc(12px + var(--font-scale)) !important;
-}
-
-.wdb1 {
-  font-family: "Anakotmai-bold";
-  font-size: calc(20px + var(--font-scale)) !important;
-}
-
-.wdb2 {
+.wh3 {
   font-family: "Anakotmai-bold";
   font-size: calc(16px + var(--font-scale)) !important;
 }
 
-.wdb3 {
+.wh4 {
   font-family: "Anakotmai-bold";
   font-size: calc(14px + var(--font-scale)) !important;
 }
 
-.wdb4 {
+.wh5 {
   font-family: "Anakotmai-bold";
   font-size: calc(12px + var(--font-scale)) !important;
+}
+
+.wp1 {
+  font-family: "Anakotmai-light";
+  font-size: calc(20px + var(--font-scale)) !important;
+}
+
+.wp2 {
+  font-family: "Anakotmai-light";
+  font-size: calc(16px + var(--font-scale)) !important;
+}
+
+.wp3 {
+  font-family: "Anakotmai-light";
+  font-size: calc(14px + var(--font-scale)) !important;
+}
+
+.wp4 {
+  font-family: "Anakotmai-light";
+  font-size: calc(12px + var(--font-scale)) !important;
+}
+
+.wa {
+  font-family: "Anakotmai-bold";
+  font-size: calc(18px + var(--font-scale)) !important;
 }
 
 /* set background color for smart home button */

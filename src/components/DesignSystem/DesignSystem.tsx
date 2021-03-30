@@ -8,6 +8,7 @@ import {
   Grid,
   Modal,
   Box,
+  Link,
 } from "@material-ui/core";
 import { ThemeContext } from "../../contexts/theme";
 import { useStyles } from "./style";
@@ -85,16 +86,18 @@ const SystemDesign = () => {
           <Grid item md={6}>
             <h2 className="wh2">Typography</h2>
             <Paper elevation={1} style={{ padding: "24px", margin: "8px" }}>
-              <h1 className="wh1">สวัสดี Web - Header font 1 Bold</h1>
-              <h2 className="wh2">สวัสดี Web - Header font 2 Bold</h2>
-              <p className="wd1">สวัสดี Web - Data font 1</p>
-              <p className="wd2">สวัสดี Web - Data font 2</p>
-              <p className="wd3">สวัสดี Web - Data font 3</p>
-              <p className="wd4">สวัสดี Web - Data font 4</p>
-              <p className="wdb1">สวัสดี Web - Data font 1 Bold</p>
-              <p className="wdb2">สวัสดี Web - Data font 2 Bold</p>
-              <p className="wdb3">สวัสดี Web - Data font 3 Bold</p>
-              <p className="wdb4">สวัสดี Web - Data font 4 Bold</p>
+              <h1 className="wh1">สวัสดี Web - Header 1</h1>
+              <h2 className="wh2">สวัสดี Web - Header 2</h2>
+              <h2 className="wh3">สวัสดี Web - Header 3</h2>
+              <h2 className="wh4">สวัสดี Web - Header 4</h2>
+              <h2 className="wh5">สวัสดี Web - Header 5</h2>
+              <p className="wp1">สวัสดี Web - Paragraph 1</p>
+              <p className="wp2">สวัสดี Web - Paragraph 2</p>
+              <p className="wp3">สวัสดี Web - Paragraph 3</p>
+              <p className="wp4">สวัสดี Web - Paragraph 4</p>
+              <Link className="wa" href="#">
+                สวัสดี Web - Link
+              </Link>
             </Paper>
           </Grid>
           <Grid item md={6}>
