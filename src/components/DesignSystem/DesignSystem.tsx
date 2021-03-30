@@ -128,7 +128,7 @@ const SystemDesign = () => {
                 </Button>
               </div>
             </Paper>
-            
+
             <h2 className="wh2">Dialog</h2>
             <Paper elevation={1} className={classes.paper}>
               <div>
@@ -169,7 +169,6 @@ const SystemDesign = () => {
         <Grid container>
           <Grid item md={6}>
             <h2 className="wh2">Nav Icon</h2>
-            <Paper elevation={1} className={classes.paper}>
               <Grid container>
                 <Grid
                   container
@@ -214,11 +213,9 @@ const SystemDesign = () => {
                 </Grid>
                 <Grid item md={6}></Grid>
               </Grid>
-            </Paper>
           </Grid>
           <Grid item md={6}>
           <h2 className="wh2">App header icon</h2>
-            <Paper elevation={1} className={classes.paper}>
               <Grid container>
                 <Grid
                   container
@@ -237,7 +234,6 @@ const SystemDesign = () => {
                   </Grid>
                 </Grid>
               </Grid>
-            </Paper>
           </Grid>
         </Grid>
 

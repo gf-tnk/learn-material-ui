@@ -18,6 +18,9 @@ const AppStyleProvider: React.FC = ({ children }) => {
           secondary: {
             main: mainSecondaryColor,
           },
+          background: {
+            default: isDarkMode ? "#212121" : "#F0F0F0"
+          }
         },
         typography: {
           fontFamily: [
