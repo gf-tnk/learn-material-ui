@@ -14,11 +14,15 @@ export const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  paper: {
+  paperModal: {
     position: "relative",
     minWidth: 480,
     borderRadius: "24px",
     border: "2px solid",
     borderColor: theme.palette.secondary.main,
+  },
+  paper: {
+    padding: "24px",
+    margin: "8px"
   }
 }));

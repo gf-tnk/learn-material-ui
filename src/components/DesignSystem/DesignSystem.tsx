@@ -16,7 +16,7 @@ import { setFontScale, setBtnScale } from "../../plugins/setScaleElement";
 
 import sttIcon from "../../assets/images/stt-app.svg";
 
-import AppLogo from "./AppLogo/AppLogo";
+import AppLogo from "../AppLogo/AppLogo";
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
   const classes = useStyles();
@@ -88,7 +88,7 @@ const SystemDesign = () => {
         <Grid container>
           <Grid item md={6}>
             <h2 className="wh2">Typography</h2>
-            <Paper elevation={1} style={{ padding: "24px", margin: "8px" }}>
+            <Paper elevation={1} className={classes.paper}>
               <h1 className="wh1">สวัสดี Web - Header 1</h1>
               <h2 className="wh2">สวัสดี Web - Header 2</h2>
               <h2 className="wh3">สวัสดี Web - Header 3</h2>
@@ -103,9 +103,10 @@ const SystemDesign = () => {
               </Link>
             </Paper>
           </Grid>
+
           <Grid item md={6}>
             <h2 className="wh2">Button</h2>
-            <Paper elevation={1} style={{ padding: "24px", margin: "8px" }}>
+            <Paper elevation={1} className={classes.paper}>
               <div className={classes.btn}>
                 <Button variant="contained" color="primary">
                   สวัสดี Primary
@@ -127,8 +128,9 @@ const SystemDesign = () => {
                 </Button>
               </div>
             </Paper>
+            
             <h2 className="wh2">Dialog</h2>
-            <Paper elevation={1} style={{ padding: "24px", margin: "8px" }}>
+            <Paper elevation={1} className={classes.paper}>
               <div>
                 <Button
                   variant="contained"
@@ -147,7 +149,7 @@ const SystemDesign = () => {
                     document.querySelector("#root") as HTMLElement
                   }
                 >
-                  <Paper className={classes.paper}>
+                  <Paper className={classes.paperModal}>
                     <Box justifyContent="center" display="flex">
                       <Box p={4} textAlign="center">
                         <h2 className="wh2">My Title</h2>
@@ -165,6 +167,81 @@ const SystemDesign = () => {
         </Grid>
 
         <Grid container>
+          <Grid item md={6}>
+            <h2 className="wh2">Nav Icon</h2>
+            <Paper elevation={1} className={classes.paper}>
+              <Grid container>
+                <Grid
+                  container
+                  item
+                  md={12}
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item md={3}>
+                    <AppLogo
+                      logo={sttIcon}
+                      title="ถอดคำ"
+                      path="/test"
+                      size="sm"
+                    />
+                  </Grid>
+                  <Grid item md={3}>
+                    <AppLogo
+                      logo={sttIcon}
+                      title="ถอดคำ"
+                      path="/test"
+                      size="sm"
+                    />
+                  </Grid>
+                  <Grid item md={3}>
+                    <AppLogo
+                      logo={sttIcon}
+                      title="ถอดคำ"
+                      path="/test"
+                      size="sm"
+                    />
+                  </Grid>
+                  <Grid item md={3}>
+                    <AppLogo
+                      logo={sttIcon}
+                      title="ถอดคำ"
+                      path="/test"
+                      size="sm"
+                    />
+                  </Grid>
+                </Grid>
+                <Grid item md={6}></Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+          <Grid item md={6}>
+          <h2 className="wh2">App header icon</h2>
+            <Paper elevation={1} className={classes.paper}>
+              <Grid container>
+                <Grid
+                  container
+                  item
+                  md={12}
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item>
+                    <AppLogo
+                      logo={sttIcon}
+                      title="ถอดคำ"
+                      path="/test"
+                      size="md"
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+
+        <Grid container>
           <h2 className="wh2">App Icon</h2>
           <Grid
             container
@@ -174,17 +251,17 @@ const SystemDesign = () => {
             justify="center"
             alignItems="center"
           >
-            <Grid item md={3}>
-              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            <Grid item xs={12} sm={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" size="lg" />
             </Grid>
-            <Grid item md={3}>
-              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            <Grid item xs={12} sm={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" size="lg" />
             </Grid>
-            <Grid item md={3}>
-              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            <Grid item xs={12} sm={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" size="lg" />
             </Grid>
-            <Grid item md={3}>
-              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" />
+            <Grid item xs={12} sm={3}>
+              <AppLogo logo={sttIcon} title="ถอดคำ" path="/test" size="lg" />
             </Grid>
           </Grid>
           <Grid item md={6}></Grid>
