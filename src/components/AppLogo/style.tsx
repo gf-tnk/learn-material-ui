@@ -10,15 +10,15 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
       props.size == "lg"
         ? "calc(10em + (var(--btn-scale))*2)"
         : props.size == "md"
-        ? "calc(8em + (var(--btn-scale))*2)"
-        : "calc(4em + (var(--btn-scale))*2)",
+        ? "calc(5em + (var(--btn-scale))*2)"
+        : "calc(3em + (var(--btn-scale))*2)",
     [theme.breakpoints.down("sm")]: {
       maxWidth:
         props.size == "lg"
           ? "calc(8em + (var(--btn-scale))*2)"
           : props.size == "md"
-          ? "calc(6em + (var(--btn-scale))*2)"
-          : "calc(2em + (var(--btn-scale))*2)",
+          ? "calc(3em + (var(--btn-scale))*2)"
+          : "calc(1em + (var(--btn-scale))*2)",
     },
   }),
   noMarginTop: {

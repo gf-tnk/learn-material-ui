@@ -20,7 +20,7 @@ const AppLogo: React.FC<Props> = (props) => {
     return (
       <>
         <Link underline="none" href={props.path}>
-          <Box display="flex" justifyContent="center">
+          <Box display="flex" justifyContent="center" alignItems="center">
             <Box textAlign="end">
               <img
                 src={props.logo}
@@ -48,7 +48,7 @@ const AppLogo: React.FC<Props> = (props) => {
               />
               <h2
                 className={
-                  props.size === "lg" ? "wh1" : "wh3 " + classes.noMarginTop
+                  props.size === "lg" ? "wh1 " + classes.noMarginTop : "wh3 " + classes.noMarginTop
                 }
               >
                 {props.title}
