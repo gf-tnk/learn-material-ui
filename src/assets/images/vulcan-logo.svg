@@ -20,11 +20,11 @@
 </g>
 </mask>
 <g mask="url(#mask0)">
-<rect width="194" height="63" fill="white"/>
+<rect width="194" height="63" fill="current"/>
 </g>
 <defs>
 <clipPath id="clip0">
-<rect width="194" height="63" fill="white"/>
+<rect width="194" height="63" fill="current"/>
 </clipPath>
 </defs>
 </svg>

@@ -18,6 +18,7 @@ import { useStyles } from "./style";
 import { setFontScale, setBtnScale } from "../../plugins/setScaleElement";
 
 import sttIcon from "../../assets/images/stt-app.svg";
+import { ReactComponent as VulcanLogo } from "../../assets/images/vulcan-logo.svg";
 
 import AppLogo from "../AppLogo/AppLogo";
 const SystemDesign = () => {
@@ -51,6 +52,8 @@ const SystemDesign = () => {
     <>
       <Container>
         <h1 className="wh1">Design Systems</h1>
+        <h2 className="wh2">Logo</h2>
+        <VulcanLogo fill={isDarkMode ? "white" : "black"} />
         <h2 className="wh2">Theme</h2>
         <Switch checked={isDarkMode} onChange={handleThemeChange} />
         <Grid container>
