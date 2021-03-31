@@ -9,6 +9,9 @@ import {
   Modal,
   Box,
   Link,
+  FormControl,
+  InputLabel,
+  Input,
 } from "@material-ui/core";
 import { ThemeContext } from "../../contexts/theme";
 import { useStyles } from "./style";
@@ -84,6 +87,30 @@ const SystemDesign = () => {
             />
           </Grid>
         </Grid>
+
+        <h2 className="wh2">Input text</h2>
+        {/* can pass props fullWidth for full width of input element or form control element */}
+        <Box display="flex">
+          <Box>
+            <FormControl>
+              <Input
+                id="my-input"
+                aria-describedby="my-helper-text"
+                value="Hello"
+              />
+            </FormControl>
+          </Box>
+          <Box ml={2}>
+            <FormControl>
+              <Input
+                id="my-input"
+                aria-describedby="my-helper-text"
+                disabled={true}
+                value="Hello"
+              />
+            </FormControl>
+          </Box>
+        </Box>
 
         <Grid container>
           <Grid item md={6}>
@@ -169,71 +196,65 @@ const SystemDesign = () => {
         <Grid container>
           <Grid item md={6}>
             <h2 className="wh2">Nav Icon</h2>
-              <Grid container>
-                <Grid
-                  container
-                  item
-                  md={12}
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                >
-                  <Grid item md={3}>
-                    <AppLogo
-                      logo={sttIcon}
-                      title="ถอดคำ"
-                      path="/test"
-                      size="sm"
-                    />
-                  </Grid>
-                  <Grid item md={3}>
-                    <AppLogo
-                      logo={sttIcon}
-                      title="ถอดคำ"
-                      path="/test"
-                      size="sm"
-                    />
-                  </Grid>
-                  <Grid item md={3}>
-                    <AppLogo
-                      logo={sttIcon}
-                      title="ถอดคำ"
-                      path="/test"
-                      size="sm"
-                    />
-                  </Grid>
-                  <Grid item md={3}>
-                    <AppLogo
-                      logo={sttIcon}
-                      title="ถอดคำ"
-                      path="/test"
-                      size="sm"
-                    />
-                  </Grid>
+            <Grid container>
+              <Grid
+                container
+                item
+                md={12}
+                direction="row"
+                justify="center"
+                alignItems="center"
+              >
+                <Grid item md={3}>
+                  <AppLogo
+                    logo={sttIcon}
+                    title="ถอดคำ"
+                    path="/test"
+                    size="sm"
+                  />
                 </Grid>
-                <Grid item md={6}></Grid>
+                <Grid item md={3}>
+                  <AppLogo
+                    logo={sttIcon}
+                    title="ถอดคำ"
+                    path="/test"
+                    size="sm"
+                  />
+                </Grid>
+                <Grid item md={3}>
+                  <AppLogo
+                    logo={sttIcon}
+                    title="ถอดคำ"
+                    path="/test"
+                    size="sm"
+                  />
+                </Grid>
+                <Grid item md={3}>
+                  <AppLogo
+                    logo={sttIcon}
+                    title="ถอดคำ"
+                    path="/test"
+                    size="sm"
+                  />
+                </Grid>
               </Grid>
+              <Grid item md={6}></Grid>
+            </Grid>
           </Grid>
           <Grid item md={6}>
-          <h2 className="wh2">App header icon</h2>
-              <Grid container>
-                <Grid
-                  container
-                  item
-                  md={12}
-                  justify="center"
-                  alignItems="center"
-                >
-                  <Grid item>
-                    <AppLogo
-                      logo={sttIcon}
-                      title="ถอดคำ"
-                      path="/test"
-                      size="md"
-                    />
-                  </Grid>
+            <h2 className="wh2">App header icon</h2>
+            <Grid container>
+              <Grid container item md={12} justify="center" alignItems="center">
+                <Grid item>
+                  <AppLogo
+                    logo={sttIcon}
+                    title="ถอดคำ"
+                    path="/test"
+                    size="md"
+                  />
                 </Grid>
               </Grid>
+            </Grid>
           </Grid>
         </Grid>
 

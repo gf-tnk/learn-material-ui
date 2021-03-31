@@ -1,11 +1,21 @@
 import React, { useContext, useEffect } from "react";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider, fade } from "@material-ui/core/styles";
 import { ThemeContext } from "../contexts/theme";
 
 const AppStyleProvider: React.FC = ({ children }) => {
   const { isDarkMode } = useContext(ThemeContext);
-  const mainPrimaryColor = isDarkMode ? "#F0F0F0" : "#212121";
-  const mainSecondaryColor = isDarkMode ? "#727373" : "#868787";
+  const color = {
+    dark: {
+      primary: "#F0F0F0",
+      secondary: "#727373",
+    },
+    light: {
+      primary: "#212121",
+      secondary: "#868787",
+    },
+  };
+  const mainPrimaryColor = isDarkMode ? color.dark.primary : color.light.primary;
+  const mainSecondaryColor = isDarkMode ? color.dark.secondary : color.light.secondary;
 
   const theme = React.useMemo(
     () =>
@@ -19,8 +29,8 @@ const AppStyleProvider: React.FC = ({ children }) => {
             main: mainSecondaryColor,
           },
           background: {
-            default: isDarkMode ? "#212121" : "#F0F0F0"
-          }
+            default: isDarkMode ? color.light.primary : color.dark.primary,
+          },
         },
         typography: {
           fontFamily: [
@@ -42,6 +52,31 @@ const AppStyleProvider: React.FC = ({ children }) => {
               border: `2px solid ${mainPrimaryColor}`,
               "&:hover": {
                 border: `2px solid ${mainPrimaryColor}`,
+              },
+            },
+          },
+          MuiInput: {
+            root: {
+              backgroundColor: mainPrimaryColor,
+              color: isDarkMode ? color.light.primary : color.dark.primary,
+              padding:
+                "calc(10px + var(--font-scale)) calc(12px + var(--font-scale))",
+              fontSize: "calc(16px + var(--font-scale)) !important",
+              fontFamily: "Anakotmai-light",
+              height: "calc(49px + (var(--font-scale))*2)",
+              borderRadius: "4px",
+              position: "relative",
+              "&.Mui-disabled": {
+                color: isDarkMode ? color.light.primary : color.dark.primary,
+                opacity: isDarkMode ? 0.3 : 0.7,
+              },
+            },
+            underline: {
+              "&&&:before": {
+                borderBottom: "none",
+              },
+              "&&:after": {
+                borderBottom: "none",
               },
             },
           },
