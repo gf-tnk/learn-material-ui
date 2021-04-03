@@ -19,6 +19,9 @@ import { setFontScale, setBtnScale } from "../../plugins/setScaleElement";
 
 import sttIcon from "../../assets/images/stt-app.svg";
 import { ReactComponent as VulcanLogo } from "../../assets/images/vulcan-logo.svg";
+import helloMascot from "../../assets/images/hello-mascot.svg"
+
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 import AppLogo from "../AppLogo/AppLogo";
 const SystemDesign = () => {
@@ -169,28 +172,17 @@ const SystemDesign = () => {
                 >
                   Open
                 </Button>
-                <Modal
-                  open={isOpen}
-                  onClose={handleClose}
-                  aria-labelledby="modal-title"
-                  aria-describedby="modal-description"
-                  className={classes.modal}
-                  container={() =>
-                    document.querySelector("#root") as HTMLElement
-                  }
+                <ConfirmModal
+                  isOpen={isOpen}
+                  title={"My title"}
+                  desc={"My desc"}
+                  handleClose={handleClose}
+                  mascot={helloMascot}
                 >
-                  <Paper className={classes.paperModal}>
-                    <Box justifyContent="center" display="flex">
-                      <Box p={4} textAlign="center">
-                        <h2 className="wh2">My Title</h2>
-                        <p className="wd2">My Description</p>
-                        <Button variant="outlined" onClick={handleClose}>
-                          สวัสดี Primary
-                        </Button>
-                      </Box>
-                    </Box>
-                  </Paper>
-                </Modal>
+                  <Button color="primary" variant="contained" onClick={handleClose}>
+                    ยืนยัน
+                  </Button>
+                </ConfirmModal>
               </div>
             </Paper>
           </Grid>

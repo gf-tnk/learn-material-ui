@@ -10,7 +10,7 @@ function App() {
 
   const DEFAULT_SCALE = "0px"
 
-  const setFontSizeMode = () => {
+  const setScaleElement = () => {
     const fontScale = localStorage.getItem("fontScale");
     const btnScale = localStorage.getItem("btnScale");
     if (fontScale && btnScale) {
@@ -23,7 +23,7 @@ function App() {
   };
 
   useEffect(() => {
-    setFontSizeMode()
+    setScaleElement()
   }, [])
   
 
