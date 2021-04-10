@@ -174,12 +174,12 @@ const SystemDesign = () => {
                 </Button>
                 <ConfirmModal
                   isOpen={isOpen}
-                  title={"My title"}
+                  title={"ยินดีด้วยได้รับ 30 เหรียญ"}
                   desc={"My desc"}
                   handleClose={handleClose}
                   mascot={helloMascot}
                 >
-                  <Button color="primary" variant="contained" onClick={handleClose}>
+                  <Button color="primary" variant="contained" onClick={handleClose} fullWidth={true}>
                     ยืนยัน
                   </Button>
                 </ConfirmModal>

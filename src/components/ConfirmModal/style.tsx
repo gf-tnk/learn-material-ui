@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   paperModal: {
     position: "relative",
-    width: "auto",
+    maxWidth: 480,
     borderRadius: "24px",
     border: "2px solid",
     borderColor: theme.palette.secondary.main,
