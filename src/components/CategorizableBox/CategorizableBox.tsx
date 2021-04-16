@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+import { Paper, Box } from "@material-ui/core";
 import React from "react";
 
 import CategorizableSound from "../CategorizableSound/CategorizableSound";
@@ -90,9 +90,12 @@ const CategorizableBox = () => {
   return (
     <>
       <Paper className={classes.paper}>
-        <h2 className="wh2">เลือกประเภทของเสียง</h2>
-        <p className="wp4">ระบุประเภทเสียงภายในเสียงย่อย</p>
-        <h3 className="wh3">เสียงที่ 1</h3>
+        <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
+        <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
+        <Box my={2}>
+          <h3 className="wh3 my-0">เสียงที่ 1</h3>
+        </Box>
+        
         <CategorizableSound category={categoryItems} />
       </Paper>
     </>

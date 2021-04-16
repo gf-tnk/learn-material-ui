@@ -7,10 +7,11 @@ import { useStyles, StyleProps } from "./style";
 
 interface Props {
   title: string;
-  desc: string;
+  desc?: string;
   icon?: string;
   hoverable?: boolean;
   isActive: boolean;
+  iconIndex?: number;
 }
 
 const CategoryItem: React.FC<Props> = (props) => {
@@ -45,16 +46,14 @@ const CategoryItem: React.FC<Props> = (props) => {
               src=""
               className={isHover ? classes.avatarActive : classes.avatar}
             >
-              {props.title[0]}
+              {props.iconIndex ? props.iconIndex: props.title[0] }
             </Avatar>
           </Box>
           <Box p={1}>
             {props.hoverable ? (
               <>
-                <div>
-                  <span className="wh4">{props.title}</span>
-                </div>
-                {isHover ? <span className="wp3">{props.desc}</span> : null}
+                  <h4 className="wh4 my-0">{props.title}</h4>
+                {isHover ? <p className="wp3 my-0">{props.desc}</p> : null}
               </>
             ) : (
               <span className="wh4">{props.title}</span>

@@ -10,6 +10,7 @@ interface Props {
 interface Cat {
   name: string;
   desc: string;
+  children: any[];
 }
 
 const CategorizableSound: React.FC<Props> = (props) => {
@@ -17,37 +18,37 @@ const CategorizableSound: React.FC<Props> = (props) => {
   const DEFAULT_CAT = {
     name: "",
     desc: "",
+    children: [],
   };
   const classes = useStyles();
   const [catIndex, setCatIndex] = useState<number>(DEFAULT_SELECTED);
   const [category, setCategory] = useState<Cat>(DEFAULT_CAT);
   const [subCat, setSubCat] = useState<any[]>([]);
-  const [subCatIndex, setSubCatIndex] = useState<number>(DEFAULT_SELECTED);
-  const [subCategory, setSubCategory] = useState<string>("");
-  const [subSubCat, setSubSubCat] = useState<any[]>([]);
+  const [subSubCatIndex, setSubSubCatIndex] = useState<string>(
+    DEFAULT_SELECTED.toString()
+  );
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
 
   const onClickCategory = (index: number) => {
     const cat = {
       name: props.category[index].name,
       desc: props.category[index].desc,
+      children: props.category[index].children,
     };
     setCatIndex(index);
-    setSubCatIndex(DEFAULT_SELECTED);
+    setSubSubCatIndex(DEFAULT_SELECTED.toString());
     setCategory(cat);
     setSubCat(props.category[index].children);
     setShowSubCat(true);
   };
 
-  const onClickSubCategory = (index: number) => {
-    setSubCatIndex(index);
-    setSubCategory(subCat[index].name);
-    setSubSubCat(props.category[index].children);
-  };
-
   const onCloseSubCat = () => {
     setShowSubCat(false);
     setSubCat([]);
+  };
+
+  const onClickSubSubCategory = (index: string) => {
+    setSubSubCatIndex(index);
   };
 
   return (
@@ -63,6 +64,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                 hoverable={true}
                 isActive={catIndex === index ? true : false}
               />
+              {item.ch}
             </div>
           ))}
         </Grid>
@@ -88,24 +90,28 @@ const CategorizableSound: React.FC<Props> = (props) => {
                     </Avatar>
                   </Box>
                   <Box p={1}>
-                    <div>
-                      <span className="wh4">{category.name}</span>
-                    </div>
-                    <span className="wp3">{category.desc}</span>
+                    <h4 className="wh4 my-0">{category.name}</h4>
+                    <p className="wp3 my-0">{category.desc}</p>
                   </Box>
                 </Box>
                 <Grid container spacing={2}>
-                  {subCat.map((item: any, index: number) => (
+                  {subCat?.map((item: any, i: number) => (
                     <Grid item xs={6}>
-                      <div onClick={() => onClickSubCategory(index)}>
-                        <CategoryItem
-                          key={item.id}
-                          title={item.name}
-                          desc={item.desc}
-                          hoverable={false}
-                          isActive={subCatIndex === index ? true : false}
-                        />
-                      </div>
+                      <h5 className="wh5 my-0">{item.name}</h5>
+                      {item.children?.map((item: any, j: number) => (
+                        <div onClick={() => onClickSubSubCategory(i + "" + j)}>
+                          <CategoryItem
+                            key={item.id}
+                            title={item.name}
+                            desc={item.desc}
+                            hoverable={false}
+                            isActive={
+                              subSubCatIndex === i + "" + j ? true : false
+                            }
+                            iconIndex={j + 1}
+                          />
+                        </div>
+                      ))}
                     </Grid>
                   ))}
                 </Grid>

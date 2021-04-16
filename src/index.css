@@ -92,6 +92,10 @@ code {
   font-size: calc(18px + var(--font-scale)) !important;
 }
 
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /* set background color for smart home button */
 .green-btn {
   background-color: #219653 !important;
