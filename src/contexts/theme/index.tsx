@@ -4,12 +4,13 @@ interface Props {
   isDarkMode: boolean | undefined;
   setIsDarkMode: (value: boolean) => void;
 }
+const defaultTheme = localStorage.getItem("theme") === "dark" ? true: false
 export const ThemeContext = React.createContext<Props>({
-  isDarkMode: false,
+  isDarkMode: defaultTheme,
   setIsDarkMode: () => {},
 });
 const ThemeContextProvider = (props: { children: React.ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(defaultTheme);
 
   return (
     <ThemeContext.Provider
