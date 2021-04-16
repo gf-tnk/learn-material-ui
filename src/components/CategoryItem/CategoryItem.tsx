@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import {
   Box,
-  Popover,
-  List,
-  ListItem,
-  ListItemAvatar,
   Avatar,
-  ListItemText,
 } from "@material-ui/core";
 import { useStyles, StyleProps } from "./style";
 
@@ -50,10 +45,10 @@ const CategoryItem: React.FC<Props> = (props) => {
               src=""
               className={isHover ? classes.avatarActive : classes.avatar}
             >
-              A
+              {props.title[0]}
             </Avatar>
           </Box>
-          <Box>
+          <Box p={1}>
             {props.hoverable ? (
               <>
                 <div>

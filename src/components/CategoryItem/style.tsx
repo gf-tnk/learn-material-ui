@@ -7,10 +7,9 @@ export interface StyleProps {
 export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   root: {
     maxWidth: "auto",
-    margin: theme.spacing(1, 0, 1, 0),
+    margin: theme.spacing(1, 0, 0, 0),
   },
   item: (props) => ({
-    margin: theme.spacing(1, 0, 0, 0),
     backgroundColor: props.isActive
       ? theme.palette.secondary.main
       : theme.palette.background.default,
