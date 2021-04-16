@@ -14,53 +14,54 @@ interface Props {
   title: string;
   desc: string;
   icon?: string;
-  hoverable: boolean;
+  hoverable?: boolean;
 }
 
 const CategoryItem: React.FC<Props> = (props) => {
-  const [hoverIndex, setHoverIndex] = useState<number>(-1);
+  const [isHover, setIsHover] = useState<boolean>(false);
   const classes = useStyles();
 
-  const handlePopoverOpen = (index: number) => {
-    setHoverIndex(index);
+  const handlePopoverOpen = () => {
+    setIsHover(true);
   };
 
   const handlePopoverClose = () => {
-    setHoverIndex(-1);
+    setIsHover(false);
   };
-
 
   return (
     <>
       <div className={classes.root}>
-        <List dense={true}>
-          {["A", "B", "C"].map((item, index) => (
-            <ListItem
-              key={index}
-              className={classes.item}
-              onMouseEnter={() => handlePopoverOpen(index)}
-              onMouseLeave={handlePopoverClose}
+        <Box
+          className={classes.item}
+          onMouseEnter={handlePopoverOpen}
+          onMouseLeave={handlePopoverClose}
+          display="flex"
+          alignItems="center"
+          style={{ height: "100%" }}
+        >
+          <Box p={1}>
+            <Avatar
+              alt="Remy Sharp"
+              src=""
+              className={isHover ? classes.avatar : undefined}
             >
-              <ListItemAvatar>
-                <Avatar
-                  alt="Remy Sharp"
-                  src=""
-                  className={hoverIndex === index ? classes.avatar : undefined}
-                >
-                  {item}
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={<span className="wh4">Speech {index}</span>}
-                secondary={
-                  hoverIndex === index ? (
-                    <span className="wp3">เสียงพูด</span>
-                  ) : null
-                }
-              />
-            </ListItem>
-          ))}
-        </List>
+              A
+            </Avatar>
+          </Box>
+          <Box>
+            {props.hoverable ? (
+              <>
+                <div>
+                  <span className="wh4">{props.title}</span>
+                </div>
+                {isHover ? <span className="wp3">{props.desc}</span> : null}
+              </>
+            ) : (
+              <span className="wh4">{props.title}</span>
+            )}
+          </Box>
+        </Box>
       </div>
     </>
   );

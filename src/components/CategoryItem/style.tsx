@@ -2,12 +2,10 @@ import { makeStyles, Theme } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    maxWidth: 260,
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2),
+    maxWidth: "auto",
   },
   item: {
-    margin: theme.spacing(1, 0, 1, 0),
+    margin: theme.spacing(1, 0, 0, 0),
     backgroundColor: theme.palette.background.default,
     borderRadius: 4,
     cursor: "pointer",

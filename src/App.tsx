@@ -34,6 +34,7 @@ function App() {
         <ThemeProvider>
           <CssBaseline />
           <CategoryItem title="Sound" desc="sound check" hoverable={true}/>
+          <CategoryItem title="Sound" desc="sound check" hoverable={false}/>
         </ThemeProvider>
       </ThemeContextProvider>
     </>
