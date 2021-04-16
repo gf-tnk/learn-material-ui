@@ -8,18 +8,22 @@ import {
   Avatar,
   ListItemText,
 } from "@material-ui/core";
-import { useStyles } from "./style";
+import { useStyles, StyleProps } from "./style";
 
 interface Props {
   title: string;
   desc: string;
   icon?: string;
   hoverable?: boolean;
+  isActive: boolean;
 }
 
 const CategoryItem: React.FC<Props> = (props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  const classes = useStyles();
+  const propsStyle: StyleProps = {
+    isActive: props.isActive,
+  };
+  const classes = useStyles(propsStyle);
 
   const handlePopoverOpen = () => {
     setIsHover(true);
@@ -44,7 +48,7 @@ const CategoryItem: React.FC<Props> = (props) => {
             <Avatar
               alt="Remy Sharp"
               src=""
-              className={isHover ? classes.avatar : undefined}
+              className={isHover ? classes.avatarActive : classes.avatar}
             >
               A
             </Avatar>
