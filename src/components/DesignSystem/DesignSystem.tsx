@@ -24,6 +24,7 @@ import helloMascot from "../../assets/images/hello-mascot.svg"
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 import AppLogo from "../AppLogo/AppLogo";
+import CategorizableBox from "../CategorizableBox/CategorizableBox";
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
   const classes = useStyles();
@@ -59,6 +60,7 @@ const SystemDesign = () => {
         <VulcanLogo fill={isDarkMode ? "white" : "black"} />
         <h2 className="wh2">Theme</h2>
         <Switch checked={isDarkMode} onChange={handleThemeChange} />
+        <CategorizableBox/>
         <Grid container>
           <Grid item md={6}>
             <h2 className="wh2">Font Size</h2>

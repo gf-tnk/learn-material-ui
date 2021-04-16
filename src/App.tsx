@@ -3,7 +3,6 @@ import SystemDesign from "./components/DesignSystem/DesignSystem";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ThemeContextProvider from "./contexts/theme";
 import ThemeProvider from "./themes/theme";
-import CategoryItem from "./components/CategoryItem/CategoryItem"
 
 import { setFontScale, setBtnScale } from "./plugins/setScaleElement";
  
@@ -33,8 +32,7 @@ function App() {
       <ThemeContextProvider>
         <ThemeProvider>
           <CssBaseline />
-          <CategoryItem title="Sound" desc="sound check" hoverable={true}/>
-          <CategoryItem title="Sound" desc="sound check" hoverable={false}/>
+          <SystemDesign/>
         </ThemeProvider>
       </ThemeContextProvider>
     </>
