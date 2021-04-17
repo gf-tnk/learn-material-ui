@@ -1,7 +1,9 @@
 import { makeStyles, Theme } from "@material-ui/core";
+import { PinDropSharp } from "@material-ui/icons";
 
 export interface StyleProps {
   isActive: boolean;
+  pastelColor: string;
 }
 
 export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
@@ -11,15 +13,16 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   },
   item: (props: StyleProps) => ({
     backgroundColor: props.isActive
-      ? theme.palette.secondary.main
+      ? "#C3CEF4"
       : theme.palette.background.default,
     border: props.isActive ? `1px solid ${theme.palette.primary.main}` : "",
     borderRadius: 4,
     cursor: "pointer",
+    color: props.isActive ? "rgba(0, 0, 0, 0.87)" : theme.palette.text.primary
   }),
-  avatar: {
-    backgroundColor: "#C4C4C4",
-  },
+  avatar: (props: StyleProps) => ({
+    backgroundColor: props.pastelColor,
+  }),
   avatarHover: {
     backgroundColor: theme.palette.primary.main,
   },

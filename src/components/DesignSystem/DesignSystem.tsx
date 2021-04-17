@@ -25,6 +25,7 @@ import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 import AppLogo from "../AppLogo/AppLogo";
 import CategorizableBox from "../CategorizableBox/CategorizableBox";
+
 const SystemDesign = () => {
   const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
   const classes = useStyles();

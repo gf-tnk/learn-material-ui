@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Grid, Paper, Grow, Avatar, Box, IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import CategoryItem from "../CategoryItem/CategoryItem";
+import SubCategoryItem from "../SubCategoryItem/SubCategoryItem";
+
 import { useStyles } from "./style";
 interface Props {
   category: any[];
@@ -61,7 +63,6 @@ const CategorizableSound: React.FC<Props> = (props) => {
                 key={item.id}
                 title={item.name}
                 desc={item.desc}
-                hoverable={true}
                 isActive={catIndex === index ? true : false}
               />
               {item.ch}
@@ -100,11 +101,10 @@ const CategorizableSound: React.FC<Props> = (props) => {
                       <h5 className="wh5 my-0">{item.name}</h5>
                       {item.children?.map((item: any, j: number) => (
                         <div onClick={() => onClickSubSubCategory(i + "" + j)}>
-                          <CategoryItem
+                          <SubCategoryItem
                             key={item.id}
                             title={item.name}
                             desc={item.desc}
-                            hoverable={false}
                             isActive={
                               subSubCatIndex === i + "" + j ? true : false
                             }

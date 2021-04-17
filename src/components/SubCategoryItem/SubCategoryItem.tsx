@@ -6,6 +6,7 @@ interface Props {
   title: string;
   desc?: string;
   isActive: boolean;
+  iconIndex?: number;
 }
 
 const CategoryItem: React.FC<Props> = (props) => {
@@ -21,6 +22,7 @@ const CategoryItem: React.FC<Props> = (props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const propsStyle: StyleProps = {
     isActive: props.isActive,
+    pastelColor: pastel.current,
   };
 
   const classes = useStyles(propsStyle);
@@ -50,14 +52,11 @@ const CategoryItem: React.FC<Props> = (props) => {
               src=""
               className={isHover ? classes.avatarHover : classes.avatar}
             >
-              {props.title[0]}
+              {props.iconIndex}
             </Avatar>
           </Box>
           <Box p={1}>
-            <>
-              <h4 className="wh4 my-0">{props.title}</h4>
-              {isHover ? <p className="wp3 my-0">{props.desc}</p> : null}
-            </>
+            <h4 className="wh4 my-0">{props.title}</h4>
           </Box>
         </Box>
       </div>
