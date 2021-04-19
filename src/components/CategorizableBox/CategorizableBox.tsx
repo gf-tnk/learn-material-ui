@@ -17,10 +17,12 @@ const CategorizableBox = () => {
       id: ID(),
       name: "Speech",
       desc: "เสียงพูด",
+      type: "all",
       children: [
         {
           id: ID(),
           name: "อารมณ์",
+          type: "one",
           children: [
             { id: ID(), name: "โกรธ" },
             { id: ID(), name: "เศร้า" },
@@ -34,6 +36,7 @@ const CategorizableBox = () => {
         {
           id: ID(),
           name: "ภาษา",
+          type: "input",
           children: [
             { id: ID(), name: "ไทย" },
             { id: ID(), name: "อังกฤษ" },
@@ -46,10 +49,12 @@ const CategorizableBox = () => {
       id: ID(),
       name: "Music and ambient",
       desc: "เสียงเพลง",
+      type: "one",
       children: [
         {
           id: ID(),
           name: "เพลง",
+          type: "one",
           children: [
             { id: ID(), name: "มีความสุข" },
             { id: ID(), name: "กระปรี้กระเปร่า" },
@@ -64,19 +69,23 @@ const CategorizableBox = () => {
         },
         {
           id: ID(),
-          name: "บรรยากาศ",
-          children: [{ id: ID(), name: "ที่ไหน" }],
+          name: "สถานที่ของเสียงบรรยากาศ",
+          type: "input",
+          children: [{ id: ID(), name: "ระบุสถานที่"}],
         },
       ],
     },
     {
       id: ID(),
       name: "Sound effect",
-      desc: "เสียงเอ็ฟเฟค",
+      desc: "เสียงประกอบสั้นๆ",
+      type: "one",
       children: [
         {
           id: ID(),
-          name: "ของอะไร",
+          name: "เสียงประกอบที่ระบุได้",
+          type: "input",
+          children: [{ id: ID(), name: "ระบุเสียงประกอบ"}],
         },
       ],
     },
@@ -84,6 +93,8 @@ const CategorizableBox = () => {
       id: ID(),
       name: "Undefined",
       desc: "ไม่สามารถระบุได้",
+      type: "one",
+      children: [],
     },
   ];
   const classes = useStyles()
@@ -96,7 +107,7 @@ const CategorizableBox = () => {
           <h3 className="wh3 my-0">เสียงที่ 1</h3>
         </Box>
         
-        <CategorizableSound category={categoryItems} />
+        <CategorizableSound items={categoryItems} />
       </Paper>
     </>
   );
