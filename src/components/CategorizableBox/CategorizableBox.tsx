@@ -49,7 +49,7 @@ const CategorizableBox = () => {
       id: ID(),
       name: "Music and ambient",
       desc: "เสียงเพลง",
-      type: "one",
+      type: "all",
       children: [
         {
           id: ID(),

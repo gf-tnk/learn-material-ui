@@ -8,26 +8,19 @@ import { useStyles } from "./style";
 interface Props {
   items: any[];
 }
-
 interface Cat {
   name: string;
   desc: string;
 }
 
 const CategorizableSound: React.FC<Props> = (props) => {
-  const DEFAULT_SELECTED = [""];
   const DEFAULT_CAT_SELECTED = {
     name: "",
     desc: "",
   };
   const classes = useStyles();
   const [catSelected, setCatSelected] = useState<Cat>(DEFAULT_CAT_SELECTED);
-  const [subCatSelected, setSubCatSelected] = useState<any[]>(
-    DEFAULT_SELECTED
-  );
-  const [subSubCatSelected, setSubSubCatSelected] = useState<string[]>(
-    DEFAULT_SELECTED
-  );
+  const [subCatSelected, setSubCatSelected] = useState<any>([]);
   const [subCatItems, setSubCatItems] = useState<any[]>([]);
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
 
@@ -35,6 +28,8 @@ const CategorizableSound: React.FC<Props> = (props) => {
     setCatSelected(props.items[index]);
     setSubCatItems(props.items[index].children);
     setShowSubCat(true);
+    const subCat = new Array(props.items[index].children.length);
+    setSubCatSelected(subCat);
   };
 
   const onCloseSubCat = () => {
@@ -42,9 +37,18 @@ const CategorizableSound: React.FC<Props> = (props) => {
     setSubCatItems([]);
   };
 
-  const onClickSubSubCategory = (subCatID: number, subSubCatID: number) => {
-    setSubCatSelected([]);
-    setSubSubCatSelected([]);
+  const onClickSubSubCategory = (
+    subCatIndex: number,
+    subSubCatIndex: number
+  ) => {
+    const subCat = [...subCatSelected];
+    subCat[subCatIndex] = {
+      subCat: subCatItems[subCatIndex].name,
+      subSubCat: subCatItems[subCatIndex].children
+        ? subCatItems[subCatIndex].children[subSubCatIndex].name
+        : "",
+    };
+    setSubCatSelected(subCat);
   };
 
   return (
@@ -93,17 +97,13 @@ const CategorizableSound: React.FC<Props> = (props) => {
                     <Grid item xs={6}>
                       <h5 className="wh5 my-0">{subCat.name}</h5>
                       {subCat.children?.map((subSubCat: any, j: number) => (
-                        <div
-                          onClick={() =>
-                            onClickSubSubCategory(subCat.id, subSubCat.id)
-                          }
-                        >
+                        <div onClick={() => onClickSubSubCategory(i, j)}>
                           <SubCategoryItem
                             key={subSubCat.id}
                             title={subSubCat.name}
                             desc={subSubCat.desc}
                             isActive={
-                              subSubCatSelected === subSubCat.name
+                              subCatSelected[i]?.subSubCat === subSubCat.name 
                                 ? true
                                 : false
                             }
