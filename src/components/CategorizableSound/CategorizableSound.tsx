@@ -108,6 +108,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                                 : false
                             }
                             iconIndex={j + 1}
+                            type={subCat.type}
                           />
                         </div>
                       ))}

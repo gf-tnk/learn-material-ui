@@ -11,7 +11,7 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   },
   item: (props: StyleProps) => ({
     backgroundColor: props.isActive
-      ? theme.palette.secondary.main
+      ? theme.palette.divider
       : theme.palette.background.default,
     border: props.isActive ? `1px solid ${theme.palette.primary.main}` : "",
     borderRadius: 4,
@@ -19,6 +19,7 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   }),
   avatar: {
     backgroundColor: "#C4C4C4",
+    color: "#212121",
   },
   avatarHover: {
     backgroundColor: theme.palette.primary.main,

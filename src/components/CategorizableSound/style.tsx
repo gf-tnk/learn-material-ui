@@ -6,10 +6,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(2),
     margin: theme.spacing(1, 0, 1, 0),
     border: `1px solid ${theme.palette.primary.main}`,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.divider,
   },
   avatar: {
     backgroundColor: "#F0F0F0",
+    color: "#212121",
   },
   closeIcon: {
     position: "absolute",
