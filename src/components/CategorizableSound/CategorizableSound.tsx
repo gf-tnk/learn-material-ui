@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Grow, Avatar, Box, IconButton } from "@material-ui/core";
+import { Grid, Paper, Grow, Avatar, IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import SubCategoryItem from "../SubCategoryItem/SubCategoryItem";
-
+import { Box } from "../ContainerBox/ContainerBox";
 import { useStyles } from "./style";
 interface Props {
   items: any[];
@@ -76,21 +76,21 @@ const CategorizableSound: React.FC<Props> = (props) => {
                 >
                   <CloseIcon />
                 </IconButton>
-                <div
-                  // display="flex"
-                  // alignItems="center"
+                <Box
+                  display="flex"
+                  alignItems="center"
                   style={{ height: "100%" }}
                 >
-                  <div>
+                  <Box p={1}>
                     <Avatar alt="Remy Sharp" src="" className={classes.avatar}>
                       {catSelected.name[0]}
                     </Avatar>
-                  </div>
-                  <div>
+                  </Box>
+                  <Box p={1}>
                     <h4 className="wh4 my-0">{catSelected.name}</h4>
                     <p className="wp3 my-0">{catSelected.desc}</p>
-                  </div>
-                </div>
+                  </Box>
+                </Box>
                 <Grid container spacing={2}>
                   {subCatItems?.map((subCat: any, i: number) => (
                     <Grid item xs={6} key={subCat.id}>

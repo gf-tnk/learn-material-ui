@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import { Box, Avatar, FormControl, Input } from "@material-ui/core";
+import { Avatar, FormControl, Input } from "@material-ui/core";
 import { useStyles, StyleProps } from "./style";
-
+import { Box } from "../ContainerBox/ContainerBox";
 interface Props {
   title: string;
   desc?: string;
@@ -49,8 +49,8 @@ const CategoryItem: React.FC<Props> = (props) => {
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}
         >
-          <div style={{ height: "100%" }}>
-            <div>
+          <Box display="flex" alignItems="center" style={{ height: "100%" }}>
+            <Box p={1}>
               <Avatar
                 alt="Remy Sharp"
                 src=""
@@ -62,13 +62,13 @@ const CategoryItem: React.FC<Props> = (props) => {
               >
                 <span>{props.iconIndex}</span>
               </Avatar>
-            </div>
-            <div>
+            </Box>
+            <Box p={1}>
               <h4 className="wh4 my-0">{props.title}</h4>
-            </div>
-          </div>
+            </Box>
+          </Box>
           {props.isActive && props.type === "input" && (
-            <div>
+            <Box p={1}>
               <FormControl fullWidth={true}>
                 <Input
                   id="my-input"
@@ -76,7 +76,7 @@ const CategoryItem: React.FC<Props> = (props) => {
                   className={classes.input}
                 />
               </FormControl>
-            </div>
+            </Box>
           )}
         </div>
       </div>

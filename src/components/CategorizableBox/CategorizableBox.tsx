@@ -1,8 +1,8 @@
-import { Paper, Box } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import React from "react";
-
 import CategorizableSound from "../CategorizableSound/CategorizableSound";
 import { useStyles } from "./style";
+import { Box } from "../ContainerBox/ContainerBox";
 
 const ID = () => {
   // Math.random should be unique because of its seeding algorithm.
@@ -103,9 +103,9 @@ const CategorizableBox = () => {
       <Paper className={classes.paper}>
         <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
         <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
-        <div>
+        <Box my={2}>
           <h3 className="wh3 my-0">เสียงที่ 1</h3>
-        </div>
+        </Box>
         
         <CategorizableSound items={categoryItems} />
       </Paper>
