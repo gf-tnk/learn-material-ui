@@ -56,9 +56,8 @@ const CategorizableSound: React.FC<Props> = (props) => {
       <Grid container spacing={2}>
         <Grid item xs={showSubCat ? 6 : 12}>
           {props.items.map((item: any, index: number) => (
-            <div onClick={() => onClickCategory(index)}>
+            <div onClick={() => onClickCategory(index)} key={item.id}>
               <CategoryItem
-                key={item.id}
                 title={item.name}
                 desc={item.desc}
                 isActive={catSelected.name === item.name ? true : false}
@@ -77,27 +76,27 @@ const CategorizableSound: React.FC<Props> = (props) => {
                 >
                   <CloseIcon />
                 </IconButton>
-                <Box
-                  display="flex"
-                  alignItems="center"
+                <div
+                  // display="flex"
+                  // alignItems="center"
                   style={{ height: "100%" }}
                 >
-                  <Box p={1}>
+                  <div>
                     <Avatar alt="Remy Sharp" src="" className={classes.avatar}>
                       {catSelected.name[0]}
                     </Avatar>
-                  </Box>
-                  <Box p={1}>
+                  </div>
+                  <div>
                     <h4 className="wh4 my-0">{catSelected.name}</h4>
                     <p className="wp3 my-0">{catSelected.desc}</p>
-                  </Box>
-                </Box>
+                  </div>
+                </div>
                 <Grid container spacing={2}>
                   {subCatItems?.map((subCat: any, i: number) => (
-                    <Grid item xs={6}>
+                    <Grid item xs={6} key={subCat.id}>
                       <h5 className="wh5 my-0">{subCat.name}</h5>
                       {subCat.children?.map((subSubCat: any, j: number) => (
-                        <div onClick={() => onClickSubSubCategory(i, j)}>
+                        <div onClick={() => onClickSubSubCategory(i, j)} key={subSubCat.id}>
                           <SubCategoryItem
                             key={subSubCat.id}
                             title={subSubCat.name}

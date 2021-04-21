@@ -40,7 +40,7 @@ const CategoryItem: React.FC<Props> = (props) => {
   return (
     <>
       <div className={classes.root}>
-        <Box
+        <div
           className={`${classes.item} ${
             props.type === "input"
               ? classes.itemWithInput
@@ -49,8 +49,8 @@ const CategoryItem: React.FC<Props> = (props) => {
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}
         >
-          <Box display="flex" alignItems="center" style={{ height: "100%" }}>
-            <Box p={1}>
+          <div style={{ height: "100%" }}>
+            <div>
               <Avatar
                 alt="Remy Sharp"
                 src=""
@@ -62,19 +62,23 @@ const CategoryItem: React.FC<Props> = (props) => {
               >
                 <span>{props.iconIndex}</span>
               </Avatar>
-            </Box>
-            <Box p={1}>
+            </div>
+            <div>
               <h4 className="wh4 my-0">{props.title}</h4>
-            </Box>
-          </Box>
+            </div>
+          </div>
           {props.isActive && props.type === "input" && (
-            <Box p={1}>
+            <div>
               <FormControl fullWidth={true}>
-                <Input id="my-input" aria-describedby="my-helper-text" className={classes.input}/>
+                <Input
+                  id="my-input"
+                  aria-describedby="my-helper-text"
+                  className={classes.input}
+                />
               </FormControl>
-            </Box>
+            </div>
           )}
-        </Box>
+        </div>
       </div>
     </>
   );

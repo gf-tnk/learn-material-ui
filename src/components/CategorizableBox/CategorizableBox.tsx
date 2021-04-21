@@ -103,9 +103,9 @@ const CategorizableBox = () => {
       <Paper className={classes.paper}>
         <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
         <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
-        <Box my={2}>
+        <div>
           <h3 className="wh3 my-0">เสียงที่ 1</h3>
-        </Box>
+        </div>
         
         <CategorizableSound items={categoryItems} />
       </Paper>

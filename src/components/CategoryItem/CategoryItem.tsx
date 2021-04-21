@@ -36,15 +36,15 @@ const CategoryItem: React.FC<Props> = (props) => {
   return (
     <>
       <div className={classes.root}>
-        <Box
+        <div
           className={classes.item}
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}
-          display="flex"
-          alignItems="center"
+          // display="flex"
+          // alignItems="center"
           style={{ height: "100%" }}
         >
-          <Box p={1}>
+          <div >
             <Avatar
               alt="Remy Sharp"
               src=""
@@ -52,14 +52,14 @@ const CategoryItem: React.FC<Props> = (props) => {
             >
               {props.title[0]}
             </Avatar>
-          </Box>
-          <Box p={1}>
+          </div>
+          <div>
             <>
               <h4 className="wh4 my-0">{props.title}</h4>
               {isHover ? <p className="wp3 my-0">{props.desc}</p> : null}
             </>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </div>
     </>
   );
