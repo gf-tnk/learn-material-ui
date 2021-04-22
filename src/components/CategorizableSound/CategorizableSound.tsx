@@ -8,7 +8,7 @@ import { useStyles } from "./style";
 interface Props {
   items: any[];
   index: number;
-  onEdit: (index: number, cat: string) => void;
+  onEdit: (index: number, selected: any) => void;
 }
 
 const CategorizableSound: React.FC<Props> = (props) => {
@@ -18,11 +18,13 @@ const CategorizableSound: React.FC<Props> = (props) => {
   };
   const classes = useStyles();
   const [catSelected, setCatSelected] = useState<any>();
+  const [subCatSelected, setSubCatSelected] = useState<any[]>()
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
   const [selected, setSelected] = useState<any>(DEFAULT_SELECTED);
 
   const onClickCategory = (index: number) => {
     setCatSelected(props.items[index]);
+    setSubCatSelected(props.items[index].children)
     setShowSubCat(true);
     const subCat = new Array(props.items[index].children.length);
     const clone = { ...selected };
@@ -54,7 +56,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
   };
 
   useEffect(() => {
-    console.log("selected ", selected);
+    props.onEdit(props.index, selected)
   }, [selected]);
 
   return (

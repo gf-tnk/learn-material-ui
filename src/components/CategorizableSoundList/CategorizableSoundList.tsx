@@ -12,7 +12,7 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 interface Props {
   markItems: any[];
-  onEdit: (index: number, cat: string) => void;
+  onEdit: (index: number, selected: any) => void;
   onDelete: (index: number) => void;
 }
 

@@ -7,29 +7,28 @@ const CategorizableBox = () => {
   const classes = useStyles();
   const DEFAULT_MARK = {
     category: "",
-    subCat: {
-      name: "",
-      input: null,
-    },
-    subSubCat: {
-      name: "",
-      input: null,
-    },
+    subCat: [],
   };
+
+  // const x = {
+  //   category: "",
+  //   subCat: {
+  //     name: "",
+  //     input: null,
+  //   },
+  //   subSubCat: {
+  //     name: "",
+  //     input: null,
+  //   },
+  // };
+
   const [markSound, setMarkSound] = useState<any[]>([DEFAULT_MARK]); // move to CategorizableSoundList !!!
 
-  const onEditMarkSound = (index: number, category: string) => {
+  const onEditMarkSound = (index: number, selected: any) => {
     const clone = [...markSound]; // for change ref data
     clone[index] = {
-      category: category,
-      subCat: {
-        name: "",
-        input: null,
-      },
-      subSubCat: {
-        name: "",
-        input: null,
-      },
+      category: selected.category,
+      subCat: selected.subCat,
     };
     setMarkSound(clone);
   };
@@ -38,14 +37,7 @@ const CategorizableBox = () => {
     const clone = [...markSound];
     clone.push({
       category: "",
-      subCat: {
-        name: "",
-        input: null,
-      },
-      subSubCat: {
-        name: "",
-        input: null,
-      },
+      subCat: []
     });
     setMarkSound(clone);
   };
@@ -58,7 +50,7 @@ const CategorizableBox = () => {
   };
 
   useEffect(() => {
-    // console.log("markSound ", markSound);
+    console.log("markSound ", markSound);
   }, [markSound]);
 
   return (
