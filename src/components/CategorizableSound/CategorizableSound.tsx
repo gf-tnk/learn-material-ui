@@ -7,6 +7,8 @@ import { Box } from "../ContainerBox/ContainerBox";
 import { useStyles } from "./style";
 interface Props {
   items: any[];
+  index: number;
+  onEdit: (index: number, cat: string) => void
 }
 interface Cat {
   name: string;
@@ -21,6 +23,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
   const classes = useStyles();
   const [catSelected, setCatSelected] = useState<Cat>(DEFAULT_CAT_SELECTED);
   const [subCatSelected, setSubCatSelected] = useState<any>([]);
+  const [subCatInput, setSubCatInput] = useState<any[]>([]);
   const [subCatItems, setSubCatItems] = useState<any[]>([]);
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
 
@@ -54,6 +57,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
   return (
     <>
       <Grid container spacing={2}>
+        {/* <button onClick={() => props.onEdit(props.index, catSelected.name)}>Edit</button> */}
         <Grid item xs={showSubCat ? 6 : 12}>
           {props.items.map((item: any, index: number) => (
             <div onClick={() => onClickCategory(index)} key={item.id}>
