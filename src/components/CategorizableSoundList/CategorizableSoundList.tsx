@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import CategorizableSound from "../CategorizableSound/CategorizableSound";
 import { Box } from "../ContainerBox/ContainerBox";
-
+// Accordion, AccordionSummary, AccordionDetails
+import {
+  Paper,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  AccordionActions,
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 interface Props {
   markItems: any[];
   onEdit: (index: number, cat: string) => void;
+  onDelete: (index: number) => void;
 }
 
 const ID = () => {
@@ -103,17 +112,28 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
   return (
     <>
       {props.markItems.map((item: any, index: number) => (
-        <>
-          <Box mt={3}>
-            <h3 className="wh3 my-0">เสียงที่ {index + 1}</h3>
-          </Box>
-          <CategorizableSound
-            items={categoryItems}
-            onEdit={props.onEdit}
-            key={index}
-            index={index}
-          />
-        </>
+        <Accordion key={index}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id={`panel-header-${index}`}
+          >
+            <Box>
+              <h3 className="wh3 my-0">เสียงที่ {index + 1}</h3>
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <CategorizableSound
+              items={categoryItems}
+              onEdit={props.onEdit}
+              key={index}
+              index={index}
+            />
+          </AccordionDetails>
+          <AccordionActions>
+            <button onClick={() => props.onDelete(index)}>delete</button>
+          </AccordionActions>
+        </Accordion>
       ))}
     </>
   );

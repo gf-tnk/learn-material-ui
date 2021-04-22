@@ -19,8 +19,8 @@ const CategorizableBox = () => {
   const [markSound, setMarkSound] = useState<any[]>([DEFAULT_MARK]); // move to CategorizableSoundList !!!
 
   const onEditMarkSound = (index: number, category: string) => {
-    const mark = [...markSound]; // for change ref data
-    mark[index] = {
+    const clone = [...markSound]; // for change ref data
+    clone[index] = {
       category: category,
       subCat: {
         name: "",
@@ -31,12 +31,12 @@ const CategorizableBox = () => {
         input: null,
       },
     };
-    setMarkSound(mark);
+    setMarkSound(clone);
   };
 
   const onAddMarkSound = () => {
-    const mark = [...markSound];
-    mark.push({
+    const clone = [...markSound];
+    clone.push({
       category: "",
       subCat: {
         name: "",
@@ -47,11 +47,18 @@ const CategorizableBox = () => {
         input: null,
       },
     });
-    setMarkSound(mark);
+    setMarkSound(clone);
+  };
+
+  const onDeleteMarkSound = (index: number) => {
+    if (index === 0) {
+      return;
+    }
+    setMarkSound(markSound.filter((mark: any, i: number) => i !== index));
   };
 
   useEffect(() => {
-    console.log("markSound ", markSound);
+    // console.log("markSound ", markSound);
   }, [markSound]);
 
   return (
@@ -63,6 +70,7 @@ const CategorizableBox = () => {
         <CategorizableSoundList
           markItems={markSound}
           onEdit={onEditMarkSound}
+          onDelete={onDeleteMarkSound}
         />
       </Paper>
     </>
