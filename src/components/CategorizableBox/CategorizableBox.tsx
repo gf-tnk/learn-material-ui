@@ -16,10 +16,7 @@ const CategorizableBox = () => {
       input: null,
     },
   };
-  const [markSound, setMarkSound] = useState<any[]>([
-    DEFAULT_MARK,
-    DEFAULT_MARK,
-  ]); // move to CategorizableSoundList !!!
+  const [markSound, setMarkSound] = useState<any[]>([DEFAULT_MARK]); // move to CategorizableSoundList !!!
 
   const onEditMarkSound = (index: number, category: string) => {
     const mark = [...markSound]; // for change ref data
@@ -37,6 +34,22 @@ const CategorizableBox = () => {
     setMarkSound(mark);
   };
 
+  const onAddMarkSound = () => {
+    const mark = [...markSound];
+    mark.push({
+      category: "",
+      subCat: {
+        name: "",
+        input: null,
+      },
+      subSubCat: {
+        name: "",
+        input: null,
+      },
+    });
+    setMarkSound(mark);
+  };
+
   useEffect(() => {
     console.log("markSound ", markSound);
   }, [markSound]);
@@ -46,6 +59,7 @@ const CategorizableBox = () => {
       <Paper className={classes.paper}>
         <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
         <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
+        <button onClick={onAddMarkSound}>Add</button>
         <CategorizableSoundList
           markItems={markSound}
           onEdit={onEditMarkSound}

@@ -8,68 +8,70 @@ import { useStyles } from "./style";
 interface Props {
   items: any[];
   index: number;
-  onEdit: (index: number, cat: string) => void
-}
-interface Cat {
-  name: string;
-  desc: string;
+  onEdit: (index: number, cat: string) => void;
 }
 
 const CategorizableSound: React.FC<Props> = (props) => {
-  const DEFAULT_CAT_SELECTED = {
-    name: "",
-    desc: "",
+  const DEFAULT_SELECTED = {
+    category: "",
+    subCat: [],
   };
   const classes = useStyles();
-  const [catSelected, setCatSelected] = useState<Cat>(DEFAULT_CAT_SELECTED);
-  const [subCatSelected, setSubCatSelected] = useState<any>([]);
-  const [subCatInput, setSubCatInput] = useState<any[]>([]);
-  const [subCatItems, setSubCatItems] = useState<any[]>([]);
+  const [catSelected, setCatSelected] = useState<any>();
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
+  const [selected, setSelected] = useState<any>(DEFAULT_SELECTED);
 
   const onClickCategory = (index: number) => {
     setCatSelected(props.items[index]);
-    setSubCatItems(props.items[index].children);
     setShowSubCat(true);
     const subCat = new Array(props.items[index].children.length);
-    setSubCatSelected(subCat);
+    const clone = { ...selected };
+    clone.category = props.items[index].name;
+    clone.subCat = subCat;
+    setSelected(clone);
   };
 
   const onCloseSubCat = () => {
     setShowSubCat(false);
-    setSubCatItems([]);
   };
 
   const onClickSubSubCategory = (
     subCatIndex: number,
     subSubCatIndex: number
   ) => {
-    const subCat = [...subCatSelected];
-    subCat[subCatIndex] = {
-      subCat: subCatItems[subCatIndex].name,
-      subSubCat: subCatItems[subCatIndex].children
-        ? subCatItems[subCatIndex].children[subSubCatIndex].name
-        : "",
+    const clone = { ...selected };
+    clone.subCat[subCatIndex] = {
+      name: catSelected.children[subCatIndex].name,
+      input: null,
+      children: {
+        name: catSelected.children[subCatIndex].children
+          ? catSelected.children[subCatIndex].children[subSubCatIndex].name
+          : "",
+        input: null,
+      },
     };
-    setSubCatSelected(subCat);
+    setSelected(clone);
   };
+
+  useEffect(() => {
+    console.log("selected ", selected);
+  }, [selected]);
 
   return (
     <>
       <Grid container spacing={2}>
-        {/* <button onClick={() => props.onEdit(props.index, catSelected.name)}>Edit</button> */}
         <Grid item xs={showSubCat ? 6 : 12}>
           {props.items.map((item: any, index: number) => (
             <div onClick={() => onClickCategory(index)} key={item.id}>
               <CategoryItem
                 title={item.name}
                 desc={item.desc}
-                isActive={catSelected.name === item.name ? true : false}
+                isActive={catSelected?.name === item.name ? true : false}
               />
             </div>
           ))}
         </Grid>
-        {subCatItems?.length > 0 && (
+        {catSelected?.children?.length > 0 && showSubCat && (
           <Grid item xs={showSubCat ? 6 : 12}>
             <Grow in={showSubCat}>
               <Paper className={classes.paper}>
@@ -91,22 +93,25 @@ const CategorizableSound: React.FC<Props> = (props) => {
                     </Avatar>
                   </Box>
                   <Box p={1}>
-                    <h4 className="wh4 my-0">{catSelected.name}</h4>
-                    <p className="wp3 my-0">{catSelected.desc}</p>
+                    <h4 className="wh4 my-0">{catSelected?.name}</h4>
+                    <p className="wp3 my-0">{catSelected?.desc}</p>
                   </Box>
                 </Box>
                 <Grid container spacing={2}>
-                  {subCatItems?.map((subCat: any, i: number) => (
+                  {catSelected.children?.map((subCat: any, i: number) => (
                     <Grid item xs={6} key={subCat.id}>
                       <h5 className="wh5 my-0">{subCat.name}</h5>
                       {subCat.children?.map((subSubCat: any, j: number) => (
-                        <div onClick={() => onClickSubSubCategory(i, j)} key={subSubCat.id}>
+                        <div
+                          onClick={() => onClickSubSubCategory(i, j)}
+                          key={subSubCat.id}
+                        >
                           <SubCategoryItem
                             key={subSubCat.id}
                             title={subSubCat.name}
                             desc={subSubCat.desc}
                             isActive={
-                              subCatSelected[i]?.subSubCat === subSubCat.name 
+                              selected.subCat[i]?.children.name === subSubCat.name
                                 ? true
                                 : false
                             }
