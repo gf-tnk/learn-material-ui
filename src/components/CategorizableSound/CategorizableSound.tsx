@@ -26,8 +26,13 @@ const CategorizableSound: React.FC<Props> = (props) => {
     setCatSelected(props.items[index]);
     setSubCatSelected(props.items[index].children)
     setShowSubCat(true);
-    const subCat = new Array(props.items[index].children.length);
     const clone = { ...selected };
+    let subCat;
+    if (clone.subCat.length === 0) {
+      subCat = new Array(props.items[index].children.length);
+    } else {
+      subCat = selected.subCat
+    }
     clone.category = props.items[index].name;
     clone.subCat = subCat;
     setSelected(clone);
@@ -101,7 +106,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                 </Box>
                 <Grid container spacing={2}>
                   {catSelected.children?.map((subCat: any, i: number) => (
-                    <Grid item xs={6} key={subCat.id}>
+                    <Grid item xs={12} key={subCat.id}>
                       <h5 className="wh5 my-0">{subCat.name}</h5>
                       {subCat.children?.map((subSubCat: any, j: number) => (
                         <div

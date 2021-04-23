@@ -1,7 +1,9 @@
-import { Paper } from "@material-ui/core";
+import { Button, Paper } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 import React, { useEffect, useState } from "react";
 import { useStyles } from "./style";
 import CategorizableSoundList from "../CategorizableSoundList/CategorizableSoundList";
+import { Box } from "../ContainerBox/ContainerBox";
 
 const CategorizableBox = () => {
   const classes = useStyles();
@@ -37,7 +39,7 @@ const CategorizableBox = () => {
     const clone = [...markSound];
     clone.push({
       category: "",
-      subCat: []
+      subCat: [],
     });
     setMarkSound(clone);
   };
@@ -56,9 +58,18 @@ const CategorizableBox = () => {
   return (
     <>
       <Paper className={classes.paper}>
-        <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
-        <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
-        <button onClick={onAddMarkSound}>Add</button>
+        <Box display="flex" mb={2}>
+          <Box>
+            <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
+            <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
+          </Box>
+          <Box mx={2}>
+            <Button variant="outlined" color="primary" onClick={onAddMarkSound}>
+              เพิ่มเสียง <AddIcon />
+            </Button>
+          </Box>
+        </Box>
+
         <CategorizableSoundList
           markItems={markSound}
           onEdit={onEditMarkSound}

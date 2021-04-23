@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CategorizableSound from "../CategorizableSound/CategorizableSound";
 import { Box } from "../ContainerBox/ContainerBox";
-// Accordion, AccordionSummary, AccordionDetails
+import IconButton from "@material-ui/core/IconButton";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+import { useStyles } from "./style";
+
 import {
   Paper,
   Accordion,
@@ -109,17 +112,40 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
       children: [],
     },
   ];
+
+  const classes = useStyles();
+
   return (
     <>
       {props.markItems.map((item: any, index: number) => (
-        <Accordion key={index}>
+        <Accordion
+          key={index}
+          defaultExpanded={index === props.markItems.length - 1}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id={`panel-header-${index}`}
           >
-            <Box>
-              <h3 className="wh3 my-0">เสียงที่ {index + 1}</h3>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              width="100%"
+              height="100%"
+            >
+              <Box>
+                <h3 className="wh3 my-0">เสียงที่ {index + 1}</h3>
+              </Box>
+              <Box>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => props.onDelete(index)}
+                  className={classes.btnDelete}
+                >
+                  <DeleteOutlineOutlinedIcon />
+                </IconButton>
+              </Box>
             </Box>
           </AccordionSummary>
           <AccordionDetails>
@@ -130,9 +156,6 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
               index={index}
             />
           </AccordionDetails>
-          <AccordionActions>
-            <button onClick={() => props.onDelete(index)}>delete</button>
-          </AccordionActions>
         </Accordion>
       ))}
     </>
