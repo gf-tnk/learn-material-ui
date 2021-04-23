@@ -18,20 +18,19 @@ const CategorizableSound: React.FC<Props> = (props) => {
   };
   const classes = useStyles();
   const [catSelected, setCatSelected] = useState<any>();
-  const [subCatSelected, setSubCatSelected] = useState<any[]>()
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
   const [selected, setSelected] = useState<any>(DEFAULT_SELECTED);
+  const [subCatInput, setSubCatInput] = useState<any[]>([]);
 
   const onClickCategory = (index: number) => {
     setCatSelected(props.items[index]);
-    setSubCatSelected(props.items[index].children)
     setShowSubCat(true);
     const clone = { ...selected };
     let subCat;
-    if (clone.subCat.length === 0) {
+    if (props.items[index].children.length === 0 || clone.subCat.length === 0) {
       subCat = new Array(props.items[index].children.length);
     } else {
-      subCat = selected.subCat
+      subCat = selected.subCat;
     }
     clone.category = props.items[index].name;
     clone.subCat = subCat;
@@ -49,7 +48,6 @@ const CategorizableSound: React.FC<Props> = (props) => {
     const clone = { ...selected };
     clone.subCat[subCatIndex] = {
       name: catSelected.children[subCatIndex].name,
-      input: null,
       children: {
         name: catSelected.children[subCatIndex].children
           ? catSelected.children[subCatIndex].children[subSubCatIndex].name
@@ -60,8 +58,24 @@ const CategorizableSound: React.FC<Props> = (props) => {
     setSelected(clone);
   };
 
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const subCatIndex = event.target.name.split(",")[0]
+    const subSubCatIndex = event.target.name.split(",")[1]
+    const clone = { ...selected };
+    clone.subCat[subCatIndex] = {
+      name: catSelected.children[subCatIndex].name,
+      children: {
+        name: catSelected.children[subCatIndex].children
+          ? catSelected.children[subCatIndex].children[subSubCatIndex].name
+          : "",
+        input: event.target.value,
+      },
+    };
+    setSelected(clone);
+  };
+
   useEffect(() => {
-    props.onEdit(props.index, selected)
+    props.onEdit(props.index, selected);
   }, [selected]);
 
   return (
@@ -118,12 +132,16 @@ const CategorizableSound: React.FC<Props> = (props) => {
                             title={subSubCat.name}
                             desc={subSubCat.desc}
                             isActive={
-                              selected.subCat[i]?.children.name === subSubCat.name
+                              selected.subCat[i]?.children.name ===
+                              subSubCat.name
                                 ? true
                                 : false
                             }
-                            iconIndex={j + 1}
+                            parentIndex={i}
+                            childIndex={j}
                             type={subCat.type}
+                            onChangeInput={onChangeInput}
+                            inputText={selected.subCat[i]?.children.input}
                           />
                         </div>
                       ))}

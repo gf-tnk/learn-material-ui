@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Avatar, FormControl, Input } from "@material-ui/core";
 import { useStyles, StyleProps } from "./style";
 import { Box } from "../ContainerBox/ContainerBox";
@@ -6,8 +6,11 @@ interface Props {
   title: string;
   desc?: string;
   isActive: boolean;
-  iconIndex?: number;
+  parentIndex: number;
+  childIndex: number;
   type: string;
+  onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void
+  inputText: string;
 }
 
 const CategoryItem: React.FC<Props> = (props) => {
@@ -21,6 +24,7 @@ const CategoryItem: React.FC<Props> = (props) => {
       "%)"
   );
   const [isHover, setIsHover] = useState<boolean>(false);
+  const [input, setInput] = useState<string>("")
   const propsStyle: StyleProps = {
     isActive: props.isActive,
     pastelColor: pastel.current,
@@ -60,7 +64,7 @@ const CategoryItem: React.FC<Props> = (props) => {
                     : classes.avatarWithoutInput
                 }
               >
-                <span>{props.iconIndex}</span>
+                <span>{props.childIndex + 1}</span>
               </Avatar>
             </Box>
             <Box p={1}>
@@ -73,7 +77,10 @@ const CategoryItem: React.FC<Props> = (props) => {
                 <Input
                   id="my-input"
                   aria-describedby="my-helper-text"
+                  name={props.parentIndex + "," + props.childIndex}
                   className={classes.input}
+                  onChange={props.onChangeInput}
+                  value={props.inputText}
                 />
               </FormControl>
             </Box>
