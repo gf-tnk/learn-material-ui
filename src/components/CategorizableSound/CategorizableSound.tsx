@@ -59,8 +59,8 @@ const CategorizableSound: React.FC<Props> = (props) => {
   };
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const subCatIndex = event.target.name.split(",")[0]
-    const subSubCatIndex = event.target.name.split(",")[1]
+    const subCatIndex = event.target.name.split(",")[0];
+    const subSubCatIndex = event.target.name.split(",")[1];
     const clone = { ...selected };
     clone.subCat[subCatIndex] = {
       name: catSelected.children[subCatIndex].name,
@@ -107,6 +107,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                   display="flex"
                   alignItems="center"
                   style={{ height: "100%" }}
+                  mb={1}
                 >
                   <Box p={1}>
                     <Avatar alt="Remy Sharp" src="" className={classes.avatar}>
@@ -122,29 +123,33 @@ const CategorizableSound: React.FC<Props> = (props) => {
                   {catSelected.children?.map((subCat: any, i: number) => (
                     <Grid item xs={12} key={subCat.id}>
                       <h5 className="wh5 my-0">{subCat.name}</h5>
-                      {subCat.children?.map((subSubCat: any, j: number) => (
-                        <div
-                          onClick={() => onClickSubSubCategory(i, j)}
-                          key={subSubCat.id}
-                        >
-                          <SubCategoryItem
-                            key={subSubCat.id}
-                            title={subSubCat.name}
-                            desc={subSubCat.desc}
-                            isActive={
-                              selected.subCat[i]?.children.name ===
-                              subSubCat.name
-                                ? true
-                                : false
-                            }
-                            parentIndex={i}
-                            childIndex={j}
-                            type={subCat.type}
-                            onChangeInput={onChangeInput}
-                            inputText={selected.subCat[i]?.children.input}
-                          />
-                        </div>
-                      ))}
+                      <Grid container spacing={1}>
+                        {subCat.children?.map((subSubCat: any, j: number) => (
+                          <Grid item xs={6}>
+                            <div
+                              onClick={() => onClickSubSubCategory(i, j)}
+                              key={subSubCat.id}
+                            >
+                              <SubCategoryItem
+                                key={subSubCat.id}
+                                title={subSubCat.name}
+                                desc={subSubCat.desc}
+                                isActive={
+                                  selected.subCat[i]?.children.name ===
+                                  subSubCat.name
+                                    ? true
+                                    : false
+                                }
+                                parentIndex={i}
+                                childIndex={j}
+                                type={subCat.type}
+                                onChangeInput={onChangeInput}
+                                inputText={selected.subCat[i]?.children.input}
+                              />
+                            </div>
+                          </Grid>
+                        ))}
+                      </Grid>
                     </Grid>
                   ))}
                 </Grid>

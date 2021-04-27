@@ -8,7 +8,7 @@ export interface StyleProps {
 export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   root: {
     maxWidth: "auto",
-    margin: theme.spacing(1, 0, 0, 0),
+    // margin: theme.spacing(1, 0, 0, 0),
   },
   item: (props: StyleProps) => ({
     borderRadius: 4,
