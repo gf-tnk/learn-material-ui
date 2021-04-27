@@ -6,7 +6,7 @@ import { useStyles } from "./style";
 
 interface Props {
   isOpen: boolean;
-  title: string;
+  title?: string;
   desc?: string;
   mascot?: string;
   handleClose: () => void;

@@ -58,25 +58,6 @@ const CategorizableBox = () => {
               เพิ่มเสียง <AddIcon />
             </Button>
           </Box>
-          <Box mx={2}>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => {
-                setMarkSound([])
-                allSelected.current = []
-              }}
-            >
-              ลบทั้งหมด <AddIcon />
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => console.log(allSelected.current)}
-            >
-              check all selected <AddIcon />
-            </Button>
-          </Box>
         </Box>
 
         <CategorizableSoundList

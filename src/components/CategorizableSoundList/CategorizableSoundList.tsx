@@ -119,7 +119,7 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
     <>
       {props.markItems.map((item: any, index: number) => (
         <Accordion
-          key={index}
+          key={"panel-" + index}
           defaultExpanded={index === props.markItems.length - 1}
         >
           <AccordionSummary

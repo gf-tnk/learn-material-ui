@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Grow, Avatar, IconButton } from "@material-ui/core";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  IconButton,
+  Modal,
+  Button,
+} from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import SubCategoryItem from "../SubCategoryItem/SubCategoryItem";
 import { Box } from "../ContainerBox/ContainerBox";
 import { useStyles } from "./style";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
+import mascot from "../../assets/images/hello-mascot.svg";
 interface Props {
   items: any[];
   index: number;
@@ -20,14 +29,15 @@ const CategorizableSound: React.FC<Props> = (props) => {
   const [catSelected, setCatSelected] = useState<any>();
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
   const [selected, setSelected] = useState<any>(DEFAULT_SELECTED);
-  const [subCatInput, setSubCatInput] = useState<any[]>([]);
+  const [isWaring, setIsWarning] = useState<boolean>(false);
+  const [warningContent, setWarningContent] = useState<string>("");
 
   const onClickCategory = (index: number) => {
     setCatSelected(props.items[index]);
     setShowSubCat(true);
     const clone = { ...selected };
     let subCat;
-    if (props.items[index].children.length === 0 || clone.subCat.length === 0) {
+    if (props.items[index].name !== catSelected?.name) {
       subCat = new Array(props.items[index].children.length);
     } else {
       subCat = selected.subCat;
@@ -74,6 +84,30 @@ const CategorizableSound: React.FC<Props> = (props) => {
     setSelected(clone);
   };
 
+  const onClickBackdrop = () => {
+    const unselected = getUnselected(selected);
+    if (unselected.length > 0) {
+      setIsWarning(true);
+      setWarningContent(unselected.toString().replace(",", ", "));
+    } else {
+      setShowSubCat(false)
+    }
+  };
+
+  const getUnselected = (selected: any) => {
+    let unselected = [];
+    for (let i = 0; i < selected.subCat.length; i++) {
+      if (!selected.subCat[i]) {
+        unselected.push(catSelected.children[i]?.name);
+      }
+    }
+    return unselected;
+  };
+
+  const handleCloseModal = () => {
+    setIsWarning(false);
+  };
+
   useEffect(() => {
     props.onEdit(props.index, selected);
   }, [selected]);
@@ -81,7 +115,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={showSubCat ? 6 : 12}>
+        <Grid item md={showSubCat ? 6 : 12} xs={12}>
           {props.items.map((item: any, index: number) => (
             <div onClick={() => onClickCategory(index)} key={item.id}>
               <CategoryItem
@@ -93,8 +127,19 @@ const CategorizableSound: React.FC<Props> = (props) => {
           ))}
         </Grid>
         {catSelected?.children?.length > 0 && showSubCat && (
-          <Grid item xs={showSubCat ? 6 : 12}>
-            <Grow in={showSubCat}>
+          <Grid item md={showSubCat ? 6 : 12} xs={12} id="sub-cat-container">
+            <Modal
+              open={showSubCat}
+              onClose={onCloseSubCat}
+              aria-labelledby="subCat-modal-title"
+              aria-describedby="subCat-modal-description"
+              container={() =>
+                document.querySelector("#sub-cat-container") as HTMLElement
+              }
+              style={{ position: "relative" }}
+              onBackdropClick={onClickBackdrop}
+              disableBackdropClick={true}
+            >
               <Paper className={classes.paper}>
                 <IconButton
                   className={classes.closeIcon}
@@ -125,7 +170,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                       <h5 className="wh5 my-0">{subCat.name}</h5>
                       <Grid container spacing={1}>
                         {subCat.children?.map((subSubCat: any, j: number) => (
-                          <Grid item xs={6}>
+                          <Grid item xs={12} md={6}>
                             <div
                               onClick={() => onClickSubSubCategory(i, j)}
                               key={subSubCat.id}
@@ -154,10 +199,25 @@ const CategorizableSound: React.FC<Props> = (props) => {
                   ))}
                 </Grid>
               </Paper>
-            </Grow>
+            </Modal>
           </Grid>
         )}
       </Grid>
+      <ConfirmModal
+        isOpen={isWaring}
+        desc={`ระบุ ${warningContent} ด้วยครับ`}
+        handleClose={handleCloseModal}
+        mascot={mascot}
+      >
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={handleCloseModal}
+          fullWidth={true}
+        >
+          ตกลง
+        </Button>
+      </ConfirmModal>
     </>
   );
 };
