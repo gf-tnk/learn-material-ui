@@ -13,7 +13,7 @@ interface Props {
   inputText: string;
 }
 
-const CategoryItem: React.FC<Props> = (props) => {
+const SubCategoryItem: React.FC<Props> = (props) => {
   const pastel = useRef<string>(
     "hsl(" +
       360 * Math.random() +
@@ -91,4 +91,4 @@ const CategoryItem: React.FC<Props> = (props) => {
   );
 };
 
-export default CategoryItem;
+export default SubCategoryItem;

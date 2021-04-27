@@ -135,7 +135,7 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
               height="100%"
             >
               <Box>
-                <h3 className="wh3 my-0">เสียงที่ {index + 1}</h3>
+                <h3 className="wh3 my-0">{item}</h3>
               </Box>
               <Box>
                 <IconButton

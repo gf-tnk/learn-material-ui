@@ -1,46 +1,36 @@
 import { Button, Paper } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useStyles } from "./style";
 import CategorizableSoundList from "../CategorizableSoundList/CategorizableSoundList";
 import { Box } from "../ContainerBox/ContainerBox";
 
 const CategorizableBox = () => {
   const classes = useStyles();
-  const DEFAULT_MARK = {
-    category: "",
+  const DEFAULT_SELECTED = {
+    name: "",
     subCat: [],
   };
-
-  // const x = {
-  //   category: "",
-  //   subCat: {
-  //     name: "",
-  //     input: null,
-  //   },
-  //   subSubCat: {
-  //     name: "",
-  //     input: null,
-  //   },
-  // };
-
-  const [markSound, setMarkSound] = useState<any[]>([DEFAULT_MARK]); // move to CategorizableSoundList !!!
+  const [markSound, setMarkSound] = useState<any[]>(["เสียงที่ 1"]); // move to CategorizableSoundList !!!
+  const allSelected = useRef<any>([DEFAULT_SELECTED]);
 
   const onEditMarkSound = (index: number, selected: any) => {
-    const clone = [...markSound]; // for change ref data
+    // this is the issue that mark performance is slowdown !!!
+    const clone = [...allSelected.current];
     clone[index] = {
       category: selected.category,
       subCat: selected.subCat,
     };
-    setMarkSound(clone);
+    allSelected.current = clone;
   };
 
   const onAddMarkSound = () => {
-    const clone = [...markSound];
-    clone.push({
+    allSelected.current.push({
       category: "",
       subCat: [],
     });
+    const clone = [...markSound]
+    clone.push(`เสียงที่ ${clone.length + 1}`)
     setMarkSound(clone);
   };
 
@@ -66,6 +56,25 @@ const CategorizableBox = () => {
           <Box mx={2}>
             <Button variant="outlined" color="primary" onClick={onAddMarkSound}>
               เพิ่มเสียง <AddIcon />
+            </Button>
+          </Box>
+          <Box mx={2}>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => {
+                setMarkSound([])
+                allSelected.current = []
+              }}
+            >
+              ลบทั้งหมด <AddIcon />
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => console.log(allSelected.current)}
+            >
+              check all selected <AddIcon />
             </Button>
           </Box>
         </Box>
