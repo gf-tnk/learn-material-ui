@@ -19,4 +19,13 @@ export const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "end",
     margin: theme.spacing(0, 1, 1, 1),
   },
+  btnDelete: {
+    border: `2px solid ${theme.palette.primary.main}`,
+    padding: "4px",
+  },
+  MuiAccordionroot: {
+    "&.MuiAccordion-root:before": {
+      height: "0px",
+    },
+  },
 }));

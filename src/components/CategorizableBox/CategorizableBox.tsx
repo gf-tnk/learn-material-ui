@@ -8,36 +8,39 @@ import { Box } from "../ContainerBox/ContainerBox";
 const CategorizableBox = () => {
   const classes = useStyles();
   const DEFAULT_SELECTED = {
-    name: "",
+    category: "",
     subCat: [],
   };
-  const [markSound, setMarkSound] = useState<any[]>(["เสียงที่ 1"]); // move to CategorizableSoundList !!!
+  const [markSound, setMarkSound] = useState<any[]>([DEFAULT_SELECTED]); // move to CategorizableSoundList !!!
   const allSelected = useRef<any>([DEFAULT_SELECTED]);
 
   const onEditMarkSound = (index: number, selected: any) => {
     // this is the issue that mark performance is slowdown !!!
-    const clone = [...allSelected.current];
+    // const clone = [...allSelected.current];
+    // clone[index] = {
+    //   category: selected.category,
+    //   subCat: selected.subCat,
+    // };
+    // allSelected.current = clone;
+    const clone = [...markSound];
     clone[index] = {
       category: selected.category,
       subCat: selected.subCat,
     };
-    allSelected.current = clone;
+    setMarkSound(clone)
   };
 
   const onAddMarkSound = () => {
-    allSelected.current.push({
-      category: "",
-      subCat: [],
-    });
-    const clone = [...markSound]
-    clone.push(`เสียงที่ ${clone.length + 1}`)
+    // allSelected.current.push({
+    //   category: "",
+    //   subCat: [],
+    // });
+    const clone = [...markSound];
+    clone.push(DEFAULT_SELECTED);
     setMarkSound(clone);
   };
 
   const onDeleteMarkSound = (index: number) => {
-    if (index === 0) {
-      return;
-    }
     setMarkSound(markSound.filter((mark: any, i: number) => i !== index));
   };
 

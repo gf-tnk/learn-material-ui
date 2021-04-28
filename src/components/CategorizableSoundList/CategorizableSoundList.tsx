@@ -6,11 +6,9 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import { useStyles } from "./style";
 
 import {
-  Paper,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  AccordionActions,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 interface Props {
@@ -114,49 +112,24 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
   ];
 
   const classes = useStyles();
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <>
       {props.markItems.map((item: any, index: number) => (
-        <Accordion
-          key={"panel-" + index}
+        <CategorizableSound
+          items={categoryItems}
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
+          key={index}
+          index={index}
           defaultExpanded={index === props.markItems.length - 1}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id={`panel-header-${index}`}
-          >
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              width="100%"
-              height="100%"
-            >
-              <Box>
-                <h3 className="wh3 my-0">{item}</h3>
-              </Box>
-              <Box>
-                <IconButton
-                  aria-label="delete"
-                  onClick={() => props.onDelete(index)}
-                  className={classes.btnDelete}
-                >
-                  <DeleteOutlineOutlinedIcon />
-                </IconButton>
-              </Box>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            <CategorizableSound
-              items={categoryItems}
-              onEdit={props.onEdit}
-              key={index}
-              index={index}
-            />
-          </AccordionDetails>
-        </Accordion>
+          expanded={expanded}
+          handleExpanded={handleChange}
+        />
       ))}
     </>
   );
