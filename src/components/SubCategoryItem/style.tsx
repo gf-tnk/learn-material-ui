@@ -3,6 +3,7 @@ export interface StyleProps {
   isActive: boolean;
   pastelColor: string;
   type: string;
+  isDarkMode: boolean | undefined;
 }
 
 export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
@@ -13,21 +14,16 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     borderRadius: 4,
     cursor: "pointer",
     color: props.isActive ? "#212121" : theme.palette.text.primary,
+    backgroundColor: props.isDarkMode ? "#212121" : "#F0F0F0",
   }),
-  itemWithoutInput: (props: StyleProps) => ({
-    backgroundColor: props.isActive
-      ? "#C3CEF4"
-      : theme.palette.background.default,
+  active: (props: StyleProps) => ({
+    backgroundColor: props.isActive ? "#C3CEF4" : "",
   }),
-  itemWithInput: (props: StyleProps) => ({
-    backgroundColor: props.isActive
-      ? "#F1E399"
-      : theme.palette.background.default,
+  activeInput: (props: StyleProps) => ({
+    backgroundColor: props.isActive ? "#F1E399" : "",
   }),
   avatarWithInput: (props: StyleProps) => ({
-    backgroundColor: props.isActive
-      ? "#FFFFFF"
-      : props.pastelColor,
+    backgroundColor: props.isActive ? "#FFFFFF" : props.pastelColor,
     color: "#212121",
   }),
   avatarWithoutInput: (props: StyleProps) => ({
@@ -37,6 +33,7 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     color: props.isActive ? theme.palette.text.primary : "#212121",
   }),
   input: {
-    backgroundColor: "#FFFFFF"
-  }
+    backgroundColor: "#FFFFFF",
+    color: "#434343"
+  },
 }));

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Grid,
   Paper,
@@ -14,13 +14,15 @@ import CloseIcon from "@material-ui/icons/Close";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import SubCategoryItem from "../SubCategoryItem/SubCategoryItem";
 import { Box } from "../ContainerBox/ContainerBox";
-import { useStyles } from "./style";
+import { useStyles, StyleProps } from "./style";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import mascot from "../../assets/images/hello-mascot.svg";
 
 import ShowSelectedItem from "../ShowSelectedItem/ShowSelectedItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+
+import { ThemeContext } from "../../contexts/theme";
 interface Props {
   items: any[];
   index: number;
@@ -39,7 +41,8 @@ const CategorizableSound: React.FC<Props> = (props) => {
     category: "",
     subCat: [],
   };
-  const classes = useStyles();
+  const { isDarkMode } = useContext(ThemeContext);
+  const classes = useStyles({ isDarkMode });
   const [catSelected, setCatSelected] = useState<any>();
   const [showSubCat, setShowSubCat] = useState<boolean>(false);
   const [selected, setSelected] = useState<any>(DEFAULT_SELECTED);
@@ -130,9 +133,9 @@ const CategorizableSound: React.FC<Props> = (props) => {
   };
 
   const handleDeleteMark = () => {
-    props.onDelete(props.index)
-    setIsDelete(true)
-  }
+    props.onDelete(props.index);
+    setIsDelete(true);
+  };
 
   useEffect(() => {
     if (selected.category === "Undefined") {
@@ -144,13 +147,15 @@ const CategorizableSound: React.FC<Props> = (props) => {
 
   // for up date selected mark sound when delete action
   useEffect(() => {
-    if(isDelete) {
-      const cat = props.items.filter((item: any, index: number) => item.name === props.selected.category)
-      setSelected(props.selected)
-      setCatSelected(cat[0])
-      setIsDelete(false)
+    if (isDelete) {
+      const cat = props.items.filter(
+        (item: any, index: number) => item.name === props.selected.category
+      );
+      setSelected(props.selected);
+      setCatSelected(cat[0]);
+      setIsDelete(false);
     }
-  }, [isDelete])
+  }, [isDelete]);
 
   return (
     <>
@@ -279,6 +284,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                                       inputText={
                                         selected.subCat[i]?.children.input
                                       }
+                                      color={subSubCat.color}
                                     />
                                   </div>
                                 </Grid>

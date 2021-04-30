@@ -30,6 +30,7 @@ const AppStyleProvider: React.FC = ({ children }) => {
           },
           background: {
             default: isDarkMode ? color.light.primary : color.dark.primary,
+            paper: isDarkMode ? "#313131" : "#E0E0E0"
           },
         },
         typography: {

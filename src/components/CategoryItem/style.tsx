@@ -2,6 +2,7 @@ import { makeStyles, Theme } from "@material-ui/core";
 
 export interface StyleProps {
   isActive: boolean;
+  isDarkMode: boolean | undefined;
 }
 
 export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
@@ -10,10 +11,10 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     margin: theme.spacing(1, 0, 0, 0),
   },
   item: (props: StyleProps) => ({
-    backgroundColor: props.isActive
-      ? theme.palette.divider
-      : theme.palette.background.default,
-    border: props.isActive ? `1px solid ${theme.palette.primary.main}` : "",
+    backgroundColor: props.isDarkMode ? "#212121" : "#F0F0F0",
+    borderStyle: props.isActive ? "solid" : "",
+    borderColor: props.isDarkMode ? "#F0F0F0" : "#868787",
+    borderWidth: "1px",
     borderRadius: 4,
     cursor: "pointer",
   }),
@@ -24,4 +25,7 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   avatarHover: {
     backgroundColor: theme.palette.primary.main,
   },
+  active: (props: StyleProps) => ({
+    backgroundColor: props.isDarkMode ? "#434343" : "#D5D5D5",
+  }),
 }));

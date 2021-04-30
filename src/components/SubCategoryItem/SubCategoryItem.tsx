@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Avatar, FormControl, Input } from "@material-ui/core";
 import { useStyles, StyleProps } from "./style";
 import { Box } from "../ContainerBox/ContainerBox";
+import { ThemeContext } from "../../contexts/theme";
 interface Props {
   title: string;
   desc?: string;
@@ -11,24 +12,18 @@ interface Props {
   type: string;
   onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void
   inputText: string;
+  color: string;
 }
 
 const SubCategoryItem: React.FC<Props> = (props) => {
-  const pastel = useRef<string>(
-    "hsl(" +
-      360 * Math.random() +
-      "," +
-      (30 + 70 * Math.random()) +
-      "%," +
-      (80 + 10 * Math.random()) +
-      "%)"
-  );
   const [isHover, setIsHover] = useState<boolean>(false);
   const [input, setInput] = useState<string>("")
+  const { isDarkMode } = useContext(ThemeContext);
   const propsStyle: StyleProps = {
     isActive: props.isActive,
-    pastelColor: pastel.current,
+    pastelColor: props.color,
     type: props.type,
+    isDarkMode: isDarkMode
   };
 
   const classes = useStyles(propsStyle);
@@ -47,8 +42,8 @@ const SubCategoryItem: React.FC<Props> = (props) => {
         <div
           className={`${classes.item} ${
             props.type === "input"
-              ? classes.itemWithInput
-              : classes.itemWithoutInput
+              ? classes.activeInput
+              : classes.active
           }`}
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}

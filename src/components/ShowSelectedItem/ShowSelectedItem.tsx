@@ -1,6 +1,6 @@
 import { Grid, Box, Avatar, Input } from "@material-ui/core";
 import React, { useContext } from "react";
-import { useStyles, PropsStyle } from "./style";
+import { useStyles } from "./style";
 import { ThemeContext } from "../../contexts/theme";
 
 interface Props {
@@ -35,18 +35,20 @@ const ShowSelectedItem: React.FC<Props> = (props) => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} className={classes.cat}>
+        <Grid item xs={12} sm={6}>
           <Grid container>
             {props.selected.subCat?.map((sub: any, i: number) => (
               <Grid
                 item
                 xs={12}
                 key={i}
-                className={
-                  sub.children.input !== null
-                    ? classes.subCatWithInput
-                    : classes.subCatWithOutInput
-                }
+                className={`${classes.subCat}
+                  ${
+                    sub.children.input !== null
+                      ? classes.subCatWithInput
+                      : classes.subCatWithOutInput
+                  }
+                `}
               >
                 <Box
                   display="flex"
@@ -73,6 +75,7 @@ const ShowSelectedItem: React.FC<Props> = (props) => {
                             // className={classes.input}
                             value={sub.children.input}
                             disabled={true}
+                            classes={{disabled: classes.input}}
                           />
                         </Box>
                       )}

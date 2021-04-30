@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Avatar } from "@material-ui/core";
 import { useStyles, StyleProps } from "./style";
 import { Box } from "../ContainerBox/ContainerBox";
+import { ThemeContext } from "../../contexts/theme";
 
 interface Props {
   title: string;
@@ -11,8 +12,10 @@ interface Props {
 
 const CategoryItem: React.FC<Props> = (props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
+  const { isDarkMode } = useContext(ThemeContext);
   const propsStyle: StyleProps = {
     isActive: props.isActive,
+    isDarkMode: isDarkMode
   };
 
   const classes = useStyles(propsStyle);
@@ -29,7 +32,7 @@ const CategoryItem: React.FC<Props> = (props) => {
     <>
       <div className={classes.root}>
         <Box
-          className={classes.item}
+          className={`${classes.item} ${props.isActive ? classes.active : null}`}
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}
           display="flex"
