@@ -6,7 +6,6 @@ import {
   IconButton,
   Modal,
   Button,
-  Container,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -32,6 +31,7 @@ interface Props {
   handleExpanded: (
     panel: string
   ) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => void;
+  selected: any;
 }
 
 const CategorizableSound: React.FC<Props> = (props) => {
@@ -46,6 +46,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
   const [isWaring, setIsWarning] = useState<boolean>(false);
   const [warningContent, setWarningContent] = useState<string>("");
   const [isSelected, setIsSelected] = useState<boolean>(false);
+  const [isDelete, setIsDelete] = useState<boolean>(false);
 
   const onClickCategory = (index: number) => {
     setCatSelected(props.items[index]);
@@ -101,6 +102,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
   };
 
   const onClickBackdrop = () => {
+    props.onEdit(props.index, selected);
     const unselected = getUnselected(selected);
     if (unselected.length > 0) {
       setIsWarning(true);
@@ -127,8 +129,12 @@ const CategorizableSound: React.FC<Props> = (props) => {
     setIsWarning(false);
   };
 
+  const handleDeleteMark = () => {
+    props.onDelete(props.index)
+    setIsDelete(true)
+  }
+
   useEffect(() => {
-    props.onEdit(props.index, selected);
     if (selected.category === "Undefined") {
       setShowSubCat(false);
       setIsWarning(false);
@@ -136,11 +142,20 @@ const CategorizableSound: React.FC<Props> = (props) => {
     }
   }, [selected]);
 
+  // for up date selected mark sound when delete action
+  useEffect(() => {
+    if(isDelete) {
+      const cat = props.items.filter((item: any, index: number) => item.name === props.selected.category)
+      setSelected(props.selected)
+      setCatSelected(cat[0])
+      setIsDelete(false)
+    }
+  }, [isDelete])
+
   return (
     <>
       <Accordion
         key={"panel-" + props.index}
-        // defaultExpanded={props.defaultExpanded}
         elevation={0}
         classes={{
           root: classes.MuiAccordionroot,
@@ -166,7 +181,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
               <Box display="flex" justifyContent="flex-end">
                 <IconButton
                   aria-label="delete"
-                  onClick={() => props.onDelete(props.index)}
+                  onClick={handleDeleteMark}
                   className={classes.btnDelete}
                 >
                   <DeleteOutlineOutlinedIcon />

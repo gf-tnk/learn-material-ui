@@ -11,17 +11,9 @@ const CategorizableBox = () => {
     category: "",
     subCat: [],
   };
-  const [markSound, setMarkSound] = useState<any[]>([DEFAULT_SELECTED]); // move to CategorizableSoundList !!!
-  const allSelected = useRef<any>([DEFAULT_SELECTED]);
+  const [markSound, setMarkSound] = useState<any[]>([DEFAULT_SELECTED]);
 
   const onEditMarkSound = (index: number, selected: any) => {
-    // this is the issue that mark performance is slowdown !!!
-    // const clone = [...allSelected.current];
-    // clone[index] = {
-    //   category: selected.category,
-    //   subCat: selected.subCat,
-    // };
-    // allSelected.current = clone;
     const clone = [...markSound];
     clone[index] = {
       category: selected.category,
@@ -31,22 +23,14 @@ const CategorizableBox = () => {
   };
 
   const onAddMarkSound = () => {
-    // allSelected.current.push({
-    //   category: "",
-    //   subCat: [],
-    // });
     const clone = [...markSound];
     clone.push(DEFAULT_SELECTED);
     setMarkSound(clone);
   };
 
   const onDeleteMarkSound = (index: number) => {
-    setMarkSound(markSound.filter((mark: any, i: number) => i !== index));
+    setMarkSound(markSound.filter((item: any, i: number) => i !== index ));
   };
-
-  useEffect(() => {
-    console.log("markSound ", markSound);
-  }, [markSound]);
 
   return (
     <>

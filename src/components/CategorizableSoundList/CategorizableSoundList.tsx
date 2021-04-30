@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CategorizableSound from "../CategorizableSound/CategorizableSound";
-import { Box } from "../ContainerBox/ContainerBox";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import { useStyles } from "./style";
 
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 interface Props {
   markItems: any[];
   onEdit: (index: number, selected: any) => void;
@@ -111,9 +102,11 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
     },
   ];
 
-  const classes = useStyles();
   const [expanded, setExpanded] = React.useState<string | false>(false);
-  const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+  const handleChange = (panel: string) => (
+    event: React.ChangeEvent<{}>,
+    isExpanded: boolean
+  ) => {
     setExpanded(isExpanded ? panel : false);
   };
 
@@ -129,6 +122,7 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
           defaultExpanded={index === props.markItems.length - 1}
           expanded={expanded}
           handleExpanded={handleChange}
+          selected={item}
         />
       ))}
     </>

@@ -43,28 +43,33 @@ code {
 
 /* Typography */
 .wh1 {
-  font-family: "Anakotmai-bold";
+  font-family: "Anakotmai-medium";
   font-size: calc(32px + var(--font-scale)) !important;
+  font-weight:lighter;
 }
 
 .wh2 {
-  font-family: "Anakotmai-bold";
+  font-family: "Anakotmai-medium";
   font-size: calc(24px + var(--font-scale)) !important;
+  font-weight:lighter;
 }
 
 .wh3 {
-  font-family: "Anakotmai-bold";
+  font-family: "Anakotmai-medium";
   font-size: calc(16px + var(--font-scale)) !important;
+  font-weight:lighter;
 }
 
 .wh4 {
-  font-family: "Anakotmai-bold";
+  font-family: "Anakotmai-medium";
   font-size: calc(14px + var(--font-scale)) !important;
+  font-weight:lighter;
 }
 
 .wh5 {
-  font-family: "Anakotmai-bold";
+  font-family: "Anakotmai-medium";
   font-size: calc(12px + var(--font-scale)) !important;
+  font-weight:lighter;
 }
 
 .wp1 {
