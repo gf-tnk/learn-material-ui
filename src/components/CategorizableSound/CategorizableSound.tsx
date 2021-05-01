@@ -49,7 +49,6 @@ const CategorizableSound: React.FC<Props> = (props) => {
   const [isWaring, setIsWarning] = useState<boolean>(false);
   const [warningContent, setWarningContent] = useState<string>("");
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [isDelete, setIsDelete] = useState<boolean>(false);
 
   const onClickCategory = (index: number) => {
     setCatSelected(props.items[index]);
@@ -64,6 +63,9 @@ const CategorizableSound: React.FC<Props> = (props) => {
     }
     clone.category = props.items[index].name;
     clone.subCat = subCat;
+    if (props.items[index].children.length === 0) {
+      props.onEdit(props.index, clone);
+    }
     setSelected(clone);
   };
 
@@ -134,7 +136,6 @@ const CategorizableSound: React.FC<Props> = (props) => {
 
   const handleDeleteMark = () => {
     props.onDelete(props.index);
-    setIsDelete(true);
   };
 
   useEffect(() => {
@@ -145,17 +146,19 @@ const CategorizableSound: React.FC<Props> = (props) => {
     }
   }, [selected]);
 
-  // for up date selected mark sound when delete action
   useEffect(() => {
-    if (isDelete) {
-      const cat = props.items.filter(
-        (item: any, index: number) => item.name === props.selected.category
-      );
+    const cat = props.items.filter(
+      (item: any) => item.name === props.selected.category
+    );
+    if (cat[0]) {
+      setIsSelected(true)
       setSelected(props.selected);
-      setCatSelected(cat[0]);
-      setIsDelete(false);
+    } else {
+      setIsSelected(false)
+      setSelected(DEFAULT_SELECTED);
     }
-  }, [isDelete]);
+    setCatSelected(cat[0]);
+  }, [props.selected]);
 
   return (
     <>

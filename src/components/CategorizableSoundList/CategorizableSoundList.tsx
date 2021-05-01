@@ -110,6 +110,11 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  useEffect(() => {
+    console.log("props.props.markItems ", props.markItems)
+  }, [props.markItems])
+
+
   return (
     <>
       {props.markItems.map((item: any, index: number) => (
