@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CategorizableSound from "../CategorizableSound/CategorizableSound";
-import { useStyles } from "./style";
-
 interface Props {
   markItems: any[];
   onEdit: (index: number, selected: any) => void;
@@ -109,11 +107,6 @@ const CategorizableSoundList: React.FC<Props> = (props) => {
   ) => {
     setExpanded(isExpanded ? panel : false);
   };
-
-  useEffect(() => {
-    console.log("props.props.markItems ", props.markItems)
-  }, [props.markItems])
-
 
   return (
     <>

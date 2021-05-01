@@ -14,7 +14,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import SubCategoryItem from "../SubCategoryItem/SubCategoryItem";
 import { Box } from "../ContainerBox/ContainerBox";
-import { useStyles, StyleProps } from "./style";
+import { useStyles } from "./style";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import mascot from "../../assets/images/hello-mascot.svg";
 
@@ -146,6 +146,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
     }
   }, [selected]);
 
+  // update mark
   useEffect(() => {
     const cat = props.items.filter(
       (item: any) => item.name === props.selected.category

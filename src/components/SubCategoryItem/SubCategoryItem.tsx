@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Avatar, FormControl, Input } from "@material-ui/core";
 import { useStyles, StyleProps } from "./style";
 import { Box } from "../ContainerBox/ContainerBox";
@@ -16,8 +16,6 @@ interface Props {
 }
 
 const SubCategoryItem: React.FC<Props> = (props) => {
-  const [isHover, setIsHover] = useState<boolean>(false);
-  const [input, setInput] = useState<string>("")
   const { isDarkMode } = useContext(ThemeContext);
   const propsStyle: StyleProps = {
     isActive: props.isActive,
@@ -25,16 +23,7 @@ const SubCategoryItem: React.FC<Props> = (props) => {
     type: props.type,
     isDarkMode: isDarkMode
   };
-
   const classes = useStyles(propsStyle);
-
-  const handlePopoverOpen = () => {
-    setIsHover(true);
-  };
-
-  const handlePopoverClose = () => {
-    setIsHover(false);
-  };
 
   return (
     <>
@@ -45,8 +34,6 @@ const SubCategoryItem: React.FC<Props> = (props) => {
               ? classes.activeInput
               : classes.active
           }`}
-          onMouseEnter={handlePopoverOpen}
-          onMouseLeave={handlePopoverClose}
         >
           <Box display="flex" alignItems="center" style={{ height: "100%" }}>
             <Box p={1}>
