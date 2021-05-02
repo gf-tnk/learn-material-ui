@@ -6,13 +6,16 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   root: {
     width: "100%",
     margin: theme.spacing(0, 2),
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    },
   },
   cat: (props: StyleProps) => ({
     backgroundColor: props.isDarkMode ? "#434343" : "#D5D5D5",
   }),
-  subCat: (props: StyleProps) => ({
+  subCat: {
     color: "#212121",
-  }),
+  },
   subCatWithOutInput: {
     backgroundColor: "#C3CEF4",
   },

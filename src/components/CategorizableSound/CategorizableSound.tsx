@@ -152,10 +152,10 @@ const CategorizableSound: React.FC<Props> = (props) => {
       (item: any) => item.name === props.selected.category
     );
     if (cat[0]) {
-      setIsSelected(true)
+      setIsSelected(true);
       setSelected(props.selected);
     } else {
-      setIsSelected(false)
+      setIsSelected(false);
       setSelected(DEFAULT_SELECTED);
     }
     setCatSelected(cat[0]);
@@ -166,9 +166,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
       <Accordion
         key={"panel-" + props.index}
         elevation={0}
-        classes={{
-          root: classes.MuiAccordionroot,
-        }}
+        className={classes.accordion}
         expanded={props.expanded === "panel-" + props.index}
         onChange={props.handleExpanded("panel-" + props.index)}
       >
@@ -176,15 +174,14 @@ const CategorizableSound: React.FC<Props> = (props) => {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id={`panel-header-${props.index}`}
+          className={classes.accordionSum}
         >
           <Grid container direction="row" alignItems="center">
-            <Grid item xs={11}>
-              <Box display="flex">
-                <Box minWidth="120px">
-                  <h3 className="wh3 my-0">เสียงที่ {props.index + 1}</h3>
-                </Box>
-                {isSelected && <ShowSelectedItem selected={selected} />}
-              </Box>
+            <Grid item xs={1}>
+              <h3 className="wh3 my-0">เสียงที่ {props.index + 1}</h3>
+            </Grid>
+            <Grid item xs={10}>
+              {isSelected && <ShowSelectedItem selected={selected} />}
             </Grid>
             <Grid item xs={1}>
               <Box display="flex" justifyContent="flex-end">
@@ -199,7 +196,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
             </Grid>
           </Grid>
         </AccordionSummary>
-        <AccordionDetails style={{ display: "block" }}>
+        <AccordionDetails className={classes.accordionDetail}>
           <Grid container spacing={2}>
             <Grid item md={showSubCat ? 6 : 12} xs={12}>
               {props.items.map((item: any, index: number) => (
@@ -266,7 +263,7 @@ const CategorizableSound: React.FC<Props> = (props) => {
                           <Grid container spacing={1}>
                             {subCat.children?.map(
                               (subSubCat: any, j: number) => (
-                                <Grid item xs={12} md={6}>
+                                <Grid item xs={12} md={6} key={subCat.id + j}>
                                   <div
                                     onClick={() => onClickSubSubCategory(i, j)}
                                     key={subSubCat.id}

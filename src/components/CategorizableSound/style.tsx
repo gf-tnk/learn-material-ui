@@ -28,9 +28,16 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     border: `2px solid ${theme.palette.primary.main}`,
     padding: "4px",
   },
-  MuiAccordionroot: {
+  accordion: {
     "&.MuiAccordion-root:before": {
       height: "0px",
-    },
-  }
+    }
+  },
+  accordionSum: {
+    padding: 0
+  },
+  accordionDetail: {
+    padding: 0,
+    display: "block"
+  },
 }));

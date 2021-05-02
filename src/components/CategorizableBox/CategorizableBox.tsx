@@ -35,7 +35,7 @@ const CategorizableBox = () => {
   return (
     <>
       <Paper className={classes.paper}>
-        <Box display="flex" mb={2}>
+        <Box display="flex" alignItems="center" height="100%" mb={2}>
           <Box>
             <h2 className="wh2 my-0">เลือกประเภทของเสียง</h2>
             <p className="wp4 my-0">ระบุประเภทเสียงภายในเสียงย่อย</p>
